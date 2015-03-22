@@ -14,10 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    myglwidget.cpp
+    myglwidget.cpp \
+    polygonwindow.cpp \
+    traingle.cpp
 
 HEADERS  += mainwindow.h \
-    myglwidget.h
+    myglwidget.h \
+    polygonwindow.h \
+    traingle.h
 
 FORMS    += mainwindow.ui
 

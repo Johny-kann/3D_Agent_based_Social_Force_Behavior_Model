@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "myglwidget.h"
 #include <QApplication>
+#include "polygonwindow.h"
+#include "traingle.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +18,9 @@ int main(int argc, char *argv[])
 
 //    MainWindow w;
 
-    MyGLWidget ww;
+ //   MyGLWidget ww;
+ //   PolygonWindow ww;
+    Traingle ww;
  //   ww.setFormat(format);
     ww.show();
 

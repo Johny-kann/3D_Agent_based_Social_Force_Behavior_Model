@@ -3,6 +3,8 @@
 #include <QOpenGLWidget>
 #include <QDebug>
 #include <QMatrix4x4>
+#include <QGLShaderProgram>
+
 
 #ifndef MYGLWIDGET_H
 #define MYGLWIDGET_H
@@ -22,7 +24,7 @@ protected:
    void paintGL();
 
    QMatrix4x4 m_projection;
-
+//   QGLShaderProgram sharderProgram;
    QMatrix4x4 m_modelView;
 
 };

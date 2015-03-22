@@ -3,7 +3,7 @@
 MyGLWidget::MyGLWidget(QWidget *parent)
         :QOpenGLWidget(parent)
 {
-    QSurfaceFormat format;
+  /*  QSurfaceFormat format;
        format.setDepthBufferSize(24);
        format.setStencilBufferSize(8);
        format.setVersion(3, 2);
@@ -11,7 +11,7 @@ MyGLWidget::MyGLWidget(QWidget *parent)
        QSurfaceFormat::setDefaultFormat(format);
 
        this->setFormat(format);
-       qDebug()<<"Format is set";
+       qDebug()<<"Format is set";*/
 }
 
 MyGLWidget::~MyGLWidget()
