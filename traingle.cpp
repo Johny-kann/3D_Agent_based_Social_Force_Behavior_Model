@@ -21,9 +21,11 @@ void Traingle::initializeGL()
 glEnable(GL_DEPTH_TEST);
 glEnable(GL_CULL_FACE);
 glClearColor(0.0f,0.0f,0.0f,0.0f);
-shaderProgram.addShaderFromSourceFile(QGLShader::Vertex, ":/vertshader.glsl");
-shaderProgram.addShaderFromSourceFile(QGLShader::Fragment, ":/fragshader.glsl");
+
+shaderProgram.addShaderFromSourceFile(QGLShader::Vertex, ":/vertshader.vsh");
+shaderProgram.addShaderFromSourceFile(QGLShader::Fragment, ":/fragshader.fsh");
 shaderProgram.link();
+
 //vertices << QVector3D(1, 0, -2) << QVector3D(0, 1, -2) << QVector3D(-1, 0, -2);
 vertices << QVector3D(-0.5, -0.5, 0.5) << QVector3D( 0.5, -0.5, 0.5) << QVector3D( 0.5, 0.5, 0.5) // Front
 << QVector3D( 0.5, 0.5, 0.5) << QVector3D(-0.5, 0.5, 0.5) << QVector3D(-0.5, -0.5, 0.5)
@@ -37,6 +39,19 @@ vertices << QVector3D(-0.5, -0.5, 0.5) << QVector3D( 0.5, -0.5, 0.5) << QVector3
 << QVector3D( 0.5, 0.5, -0.5) << QVector3D(-0.5, 0.5, -0.5) << QVector3D(-0.5, 0.5, 0.5)
 << QVector3D(-0.5, -0.5, -0.5) << QVector3D( 0.5, -0.5, -0.5) << QVector3D( 0.5, -0.5, 0.5) // Bottom
 << QVector3D( 0.5, -0.5, 0.5) << QVector3D(-0.5, -0.5, 0.5) << QVector3D(-0.5, -0.5, -0.5);
+
+colors << QVector3D(1, 0, 0) << QVector3D(1, 0, 0) << QVector3D(1, 0, 0) // Front
+<< QVector3D(1, 0, 0) << QVector3D(1, 0, 0) << QVector3D(1, 0, 0)
+<< QVector3D(1, 0, 0) << QVector3D(1, 0, 0) << QVector3D(1, 0, 0) // Back
+<< QVector3D(1, 0, 0) << QVector3D(1, 0, 0) << QVector3D(1, 0, 0)
+<< QVector3D(0, 1, 0) << QVector3D(0, 1, 0) << QVector3D(0, 1, 0) // Left
+<< QVector3D(0, 1, 0) << QVector3D(0, 1, 0) << QVector3D(0, 1, 0)
+<< QVector3D(0, 1, 0) << QVector3D(0, 1, 0) << QVector3D(0, 1, 0) // Right
+<< QVector3D(0, 1, 0) << QVector3D(0, 1, 0) << QVector3D(0, 1, 0)
+<< QVector3D(0, 0, 1) << QVector3D(0, 0, 1) << QVector3D(0, 0, 1) // Top
+<< QVector3D(0, 0, 1) << QVector3D(0, 0, 1) << QVector3D(0, 0, 1)
+<< QVector3D(0, 0, 1) << QVector3D(0, 0, 1) << QVector3D(0, 0, 1) // Bottom
+<< QVector3D(0, 0, 1) << QVector3D(0, 0, 1) << QVector3D(0, 0, 1);
 }
 
 void Traingle::resizeGL(int width, int height)
@@ -63,13 +78,22 @@ QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,distance);
 QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
 
 vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
+
 shaderProgram.bind();
 shaderProgram.setUniformValue("mvpMatrix", pMatrix * vMatrix * mMatrix);
-shaderProgram.setUniformValue("color", QColor(Qt::white));
+
 shaderProgram.setAttributeArray("vertex", vertices.constData());
 shaderProgram.enableAttributeArray("vertex");
+
+//shaderProgram.setUniformValue("color", QColor(Qt::white));
+shaderProgram.setAttributeArray("color",colors.constData());
+shaderProgram.enableAttributeArray("color");
+
 glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+
 shaderProgram.disableAttributeArray("vertex");
+shaderProgram.disableAttributeArray("color");
+
 shaderProgram.release();
 }
 

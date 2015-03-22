@@ -1,6 +1,6 @@
-uniform vec4 color;
+//uniform vec4 color;
 
-in vec4 varyingColor
+in vec4 varyingColor;
 
 out vec4 fragColor;
 
