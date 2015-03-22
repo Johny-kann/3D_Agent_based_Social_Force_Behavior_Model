@@ -31,9 +31,12 @@ void MyGLWidget::resizeGL(int w,int h)
     m_projection.setToIdentity();
     m_projection.perspective(45, (float)w/float(h), 1, 1000);
     m_modelView.setToIdentity();
+    glViewport(0, 0,w,h);
+     qDebug()<<"Resize is met";
 }
 
 void MyGLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
+     qDebug()<<"Paint is met";
 }

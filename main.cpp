@@ -14,11 +14,11 @@ int main(int argc, char *argv[])
        QSurfaceFormat::setDefaultFormat(format);
 */
 
-    MainWindow w;
+//    MainWindow w;
 
- //   MyGLWidget ww;
+    MyGLWidget ww;
  //   ww.setFormat(format);
-    w.show();
+    ww.show();
 
     return a.exec();
 }
