@@ -3,6 +3,9 @@
 #include <QApplication>
 #include "polygonwindow.h"
 #include "traingle.h"
+#include "glcontainer.h"
+#include "openglwindow.h"
+#include "texturemapping.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,13 +18,20 @@ int main(int argc, char *argv[])
        format.setProfile(QSurfaceFormat::CoreProfile);
        QSurfaceFormat::setDefaultFormat(format);
 */
+    QSurfaceFormat format;
+    format.setSamples(16);
 
- //  MainWindow ww;
+ //   OpenGLWindow ww;
+ //   ww.setFormat(format);
 
+
+//   MainWindow ww;
+    TextureMapping ww;
 
  //   MyGLWidget ww;
  //   PolygonWindow ww;
-    Traingle ww;
+ //   Traingle ww;
+//    GLContainer ww;
  //   ww.setFormat(format);
     ww.show();
 

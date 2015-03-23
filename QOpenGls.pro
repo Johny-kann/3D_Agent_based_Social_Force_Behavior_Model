@@ -16,14 +16,23 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     myglwidget.cpp \
     polygonwindow.cpp \
-    traingle.cpp
+    traingle.cpp \
+    glcontainer.cpp \
+    secondwindow.cpp \
+    openglwindow.cpp \
+    texturemapping.cpp
 
 HEADERS  += mainwindow.h \
     myglwidget.h \
     polygonwindow.h \
-    traingle.h
+    traingle.h \
+    glcontainer.h \
+    secondwindow.h \
+    openglwindow.h \
+    texturemapping.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    secondwindow.ui
 
 DISTFILES += \
     fragshader.frag \
