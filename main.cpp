@@ -6,6 +6,7 @@
 #include "glcontainer.h"
 #include "openglwindow.h"
 #include "texturemapping.h"
+#include "secondwindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,8 +27,10 @@ int main(int argc, char *argv[])
 
 
 //   MainWindow ww;
+//   SecondWindow ww;
     TextureMapping ww;
-
+ //   ww.setAnimating(true);
+  //  ww.renderLater();
  //   MyGLWidget ww;
  //   PolygonWindow ww;
  //   Traingle ww;

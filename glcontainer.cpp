@@ -3,7 +3,7 @@
 #include "glcontainer.h"
 
 GLContainer::GLContainer(QWidget *parent)
-    :QOpenGLWidget(parent)
+    :QOpenGLWidget(parent),m_update_pending(false)
 {
   //  initializeOpenGLFunctions();
   //  glClearColor(0.0f,0.0f,0.0f,0.0f);
@@ -16,12 +16,12 @@ GLContainer::~GLContainer()
 
 void GLContainer::initialize()
 {
-
+qDebug()<<"Initiali";
 }
 
 void GLContainer::initializeGL()
 {
-
+        qDebug()<<"Init B GL";
          initializeOpenGLFunctions();
          glClearColor(0.0f,0.0f,0.0f,0.0f);
 }
@@ -37,6 +37,7 @@ void GLContainer::setAnimating(bool animating)
 
 void GLContainer::renderLater()
 {
+    qDebug()<<"Render Later";
     if (!m_update_pending)
     {
         m_update_pending = true;
@@ -44,14 +45,32 @@ void GLContainer::renderLater()
     }
 }
 
+/*
+bool GLContainer::event(QEvent *event)
+{
+    switch (event->type())
+    {
+        case QEvent::UpdateRequest:
+            m_update_pending = false;
+            renderNow();
+            return true;
+        default:
+            return QWidget::event(event);
+    }
+}
+*/
+
 void GLContainer::render()
 {
-   qDebug()<<"Render";
+   qDebug()<<"Render B";
     glClear(GL_COLOR_BUFFER_BIT);
 }
+
+
+
 void GLContainer::renderNow()
 {
-   qDebug()<<"Render now";
+   qDebug()<<"Render now GL";
     /* if (!isExposed())
         return;
 */
@@ -69,23 +88,27 @@ void GLContainer::renderNow()
     makeCurrent();
     if (needsInitialize)
     {
-        initializeOpenGLFunctions();
+       // initializeOpenGLFunctions();
         initialize();
         const qreal retinaScale = devicePixelRatio();
         resizeGL(width()*retinaScale, height()*retinaScale);
     }
-  //  render();
+    render();
 
  //   m_context->swapBuffers();
-  //  frameSwapped();
+    frameSwapped();
     if (m_animating)
+    {
         renderLater();
+    }
 
 }
 
+
+
 void GLContainer::resizeGL(int w,int h)
 {
-    qDebug()<<"Resize";
+    qDebug()<<"Resize B";
     if(h == 0)
     {
         h = 1;
@@ -97,12 +120,12 @@ void GLContainer::resizeGL(int w,int h)
     m_projection.setToIdentity();
     m_projection.perspective(45, (float)w/float(h), 1, 1000);
     m_modelView.setToIdentity();
-    renderNow();
+  //  renderNow();
 }
 
 void GLContainer::paintGL()
 {
-   qDebug()<<"Paint";
-    GLContainer::render();
+   qDebug()<<"Paint B";
+    renderNow();
   //   qDebug()<<"Paint is met";
 }

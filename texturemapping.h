@@ -13,6 +13,8 @@ public:
 protected:
     void initialize();
     void render();
+    void initializeGL();
+
 private:
     void loadGLTexture();
 

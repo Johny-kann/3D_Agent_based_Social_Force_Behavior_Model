@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>661</width>
-    <height>354</height>
+    <width>779</width>
+    <height>583</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,10 +19,21 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>611</width>
-      <height>291</height>
+      <width>711</width>
+      <height>461</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>2</width>
+      <height>2</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -30,7 +41,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>661</width>
+     <width>779</width>
      <height>21</height>
     </rect>
    </property>
@@ -51,6 +62,9 @@
    <class>TextureMapping</class>
    <extends>QOpenGLWidget</extends>
    <header>texturemapping.h</header>
+   <slots>
+    <slot>renderNow()</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -24,7 +24,9 @@ public slots:
 
 
 protected:
-   void initializeGL();
+  //  bool event(QEvent *event);
+
+    void initializeGL();
 
    void resizeGL(int w,int h);
 
