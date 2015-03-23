@@ -21,9 +21,7 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     myglwidget.h \
     polygonwindow.h \
-    traingle.h \
-    H:/softwares/OpenGl/glext.h \
-    glext.h
+    traingle.h
 
 FORMS    += mainwindow.ui
 
@@ -37,4 +35,3 @@ DISTFILES += \
 
 RESOURCES += \
     src.qrc
-
