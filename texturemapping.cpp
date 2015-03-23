@@ -119,7 +119,23 @@ void TextureMapping::render()
     m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
     m_modelView.rotate(m_zrot, 0.0, 0.0, 1.0);
 
-    m_program->setUniformValue("mvpMatrix", m_projection * m_modelView);
+    QMatrix4x4 cameraTransformation;
+    QMatrix4x4 vMatrix;
+    vMatrix.setToIdentity();
+    cameraTransformation.setToIdentity();
+    double alpha = 0.0;
+    double beta = 0.0;
+    double distance = 2.5;
+    // qDebug()<<QString("alpha %1 beta %2 distance %3").arg(alpha).arg(beta).arg(distance);
+    cameraTransformation.rotate(alpha,0,1,0);
+    cameraTransformation.rotate(beta,1,0,0);
+
+    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,distance);
+    QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
+
+    vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
+  //  vMatrix.setToIdentity();
+    m_program->setUniformValue("mvpMatrix", m_projection *vMatrix* m_modelView);
     quintptr offset = 0;
     glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[0]);
     m_program->enableAttributeArray(m_posAttr);

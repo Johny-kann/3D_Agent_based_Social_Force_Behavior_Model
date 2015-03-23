@@ -22,6 +22,8 @@ public slots:
 
     void renderNow();
 
+    void signalDetecter();
+
 
 protected:
   //  bool event(QEvent *event);

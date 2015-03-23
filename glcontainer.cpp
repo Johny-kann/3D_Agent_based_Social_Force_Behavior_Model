@@ -3,10 +3,11 @@
 #include "glcontainer.h"
 
 GLContainer::GLContainer(QWidget *parent)
-    :QOpenGLWidget(parent),m_update_pending(false)
+    :QOpenGLWidget(parent),m_update_pending(false),m_animating(false)
 {
   //  initializeOpenGLFunctions();
   //  glClearColor(0.0f,0.0f,0.0f,0.0f);
+
 }
 
 GLContainer::~GLContainer()
@@ -33,6 +34,11 @@ void GLContainer::setAnimating(bool animating)
     {
         renderLater();
     }
+}
+
+void GLContainer::signalDetecter()
+{
+    qDebug()<<"Signal Detected";
 }
 
 void GLContainer::renderLater()
@@ -99,6 +105,7 @@ void GLContainer::renderNow()
     frameSwapped();
     if (m_animating)
     {
+        qDebug()<<"Render now  inside GL";
         renderLater();
     }
 
@@ -108,7 +115,7 @@ void GLContainer::renderNow()
 
 void GLContainer::resizeGL(int w,int h)
 {
-    qDebug()<<"Resize B";
+    qDebug()<<"Resize B "<<w<<" "<<h;
     if(h == 0)
     {
         h = 1;
