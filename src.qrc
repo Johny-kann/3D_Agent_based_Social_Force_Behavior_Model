@@ -2,5 +2,10 @@
     <qresource prefix="/">
         <file>fragshader.fsh</file>
         <file>vertshader.vsh</file>
+        <file>texture.png</file>
+        <file>coloringfragshader.fsh</file>
+        <file>coloringvertexshader.vsh</file>
+        <file>lightingfragmentshader.fsh</file>
+        <file>lightingvertexshader.vsh</file>
     </qresource>
 </RCC>

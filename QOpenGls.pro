@@ -27,7 +27,11 @@ FORMS    += mainwindow.ui
 
 DISTFILES += \
     fragshader.frag \
-    vertshader.vert
+    vertshader.vert \
+    lightingvertexshader.vsh \
+    coloringvertexshader.vsh \
+    coloringfragshader.fsh \
+    lightingfragmentshader.fsh
 
 RESOURCES += \
     src.qrc

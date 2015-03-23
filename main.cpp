@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
        QSurfaceFormat::setDefaultFormat(format);
 */
 
-//    MainWindow w;
+ //  MainWindow ww;
+
 
  //   MyGLWidget ww;
  //   PolygonWindow ww;
