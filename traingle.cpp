@@ -1,10 +1,14 @@
 #include "traingle.h"
+#include <QOpenGLFunctions>
+
+
 
 //Traingle::Traingle(QWidget *parent)
 //    :QGLWidget(QGLFormat(/* Additional format options */), parent)QGLWidget(QGLFormat(/* Additional format options */), parent)
 Traingle::Traingle(QWidget *parent)
         : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
 {
+
 
     alpha = 25;
     beta = -25;
@@ -24,6 +28,7 @@ Traingle::~Traingle()
 
 void Traingle::initializeGL()
 {
+
 glEnable(GL_DEPTH_TEST);
 glEnable(GL_CULL_FACE);
 glClearColor(0.0f,0.0f,0.0f,0.0f);
@@ -163,6 +168,7 @@ void Traingle::timeout()
 
 void Traingle::paintGL()
 {
+    m_context->makeCurrent();
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 QMatrix4x4 mMatrix;
 QMatrix4x4 vMatrix;
@@ -195,7 +201,11 @@ lightingShaderProgram.setUniformValue("specularReflection", (GLfloat) 1.0);
 lightingShaderProgram.setUniformValue("shininess", (GLfloat) 100.0);
 lightingShaderProgram.setUniformValue("texture", 0);
 
+//QGLFunctions.glActiveTexture(GL_TEXTURE0);
+glActiveTexture(GL_TEXTURE0);
 glBindTexture(GL_TEXTURE_2D,cubeTexture);
+glActiveTexture(0);
+//QGLFunctions.glActiveTexture(0);
 //glActiveTe
 
 lightingShaderProgram.setAttributeArray("vertex", cubeVertices.constData());
@@ -205,7 +215,9 @@ lightingShaderProgram.enableAttributeArray("normal");
 lightingShaderProgram.setAttributeArray("textureCoordinate", cubeTextureCoordinates.constData());
 lightingShaderProgram.enableAttributeArray("textureCoordinate");
 
+//QGLFunctions::glActiveTexture(GL_TEXTURE0);
 glDrawArrays(GL_TRIANGLES, 0, cubeVertices.size());
+//QGLFunctions::glActiveTexture(0);
 
 lightingShaderProgram.disableAttributeArray("vertex");
 lightingShaderProgram.disableAttributeArray("normal");

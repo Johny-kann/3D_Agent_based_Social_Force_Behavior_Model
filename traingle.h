@@ -2,8 +2,10 @@
 #include "myglwidget.h"
 #include <QMouseEvent>
 #include <QTimer>
+#include <QGLFunctions>
+#include <QGLContext>
 
-
+//#include <GL/glew.h>
 
 #ifndef TRAINGLE_H
 #define TRAINGLE_H
@@ -43,6 +45,7 @@ private:
     QVector<QVector3D> spotlightVertices;
     QVector<QVector3D> spotlightColors;
 
+    QGLContext *m_context;
 
     double lightAngle;
     QVector<QVector3D> vertices;
