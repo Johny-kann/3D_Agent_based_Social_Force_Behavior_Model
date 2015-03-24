@@ -177,63 +177,6 @@ void TextureMapping::initializeGL()
 void TextureMapping::render()
 {
     qDebug()<<"TRender";
-  /*  m_program->bind();
-
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    m_modelView.setToIdentity();
-    m_modelView.translate(0.0f, 0.0f, -5.0f);
-    m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
-    m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
-    m_modelView.rotate(m_zrot, 0.0, 0.0, 1.0);
-
-    QMatrix4x4 cameraTransformation;
-    QMatrix4x4 vMatrix;
-    vMatrix.setToIdentity();
-    cameraTransformation.setToIdentity();
-    double alpha = 0.0;
-    double beta = 0.0;
-    double distance = 2.5;
-    // qDebug()<<QString("alpha %1 beta %2 distance %3").arg(alpha).arg(beta).arg(distance);
-    cameraTransformation.rotate(alpha,0,1,0);
-    cameraTransformation.rotate(beta,1,0,0);
-
-    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,distance);
-    QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
-
-    vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
-  //  vMatrix.setToIdentity();
-    m_program->setUniformValue("mvpMatrix", m_projection *vMatrix* m_modelView);
-    quintptr offset = 0;
-    glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[0]);
-    m_program->enableAttributeArray(m_posAttr);
-    glVertexAttribPointer(m_posAttr, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
-    offset += sizeof(QVector3D);
-    m_program->enableAttributeArray(m_texCoordAttr);
-    glVertexAttribPointer(m_texCoordAttr, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
-
-    glBindTexture(GL_TEXTURE_2D, m_texture);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[1]);
-    glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
-    m_program->release();
-
-    QMatrix4x4 cameraTransformation;
-  //  QMatrix4x4 vMatrix;
-    m_vMatrix.setToIdentity();
-    cameraTransformation.setToIdentity();
-
-    // qDebug()<<QString("alpha %1 beta %2 distance %3").arg(alpha).arg(beta).arg(distance);
-    cameraTransformation.rotate(alpha,0,1,0);
-    cameraTransformation.rotate(beta,1,0,0);
-
-    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,distance);
-    QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
-
-    m_vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
-
-    QMatrix4x4 lightTransformation;
-    lightTransformation.rotate(lightv, 1, 0, 0);
-
-    */
 
     m_program->bind();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -281,12 +224,10 @@ void TextureMapping::render()
 
     m_modelView.setToIdentity();
     m_modelView.translate(3.0f, 0.0f, -5.0);
-  m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
+    m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
     m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
 
     m_program->setUniformValue("mvpMatrix", m_projection * m_vMatrix * m_modelView);
-
-
 
     glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[2]);
     m_program->enableAttributeArray(m_posAttr);
@@ -304,8 +245,8 @@ void TextureMapping::render()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[3]);
     glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
 
-    //-----------------------------------------------------------
-offset = 0;
+
+    offset = 0;
     m_modelView.setToIdentity();
     m_modelView.translate(0.0f, 0.0f, -5.0);
   m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
@@ -331,39 +272,6 @@ offset = 0;
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[3]);
     glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
 
-    //------------------------------------------------------------------------------------------------------------------
-
-  //  m_program->release();
-  //  m_program->bind();
-
-  //  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  //  glClear(GL_TEXTURE_2D);
- /*   m_modelView.setToIdentity();
-    m_modelView.translate(3.0f, 0.0f, -5.0);
-  m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
-    m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
-
-    m_program->setUniformValue("mvpMatrix", m_projection * m_vMatrix * m_modelView);
-
-
-
-    glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[2]);
-    m_program->enableAttributeArray(m_posAttr);
-    glVertexAttribPointer(m_posAttr, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
-
-    offset += sizeof(QVector3D);
-    m_program->enableAttributeArray(m_normalAttr);
-    glVertexAttribPointer(m_normalAttr, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
-
-    offset += sizeof(QVector3D);
-    m_program->enableAttributeArray(m_texCoordAttr);
-    glVertexAttribPointer(m_texCoordAttr, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
-
-  //  glBindTexture(GL_TEXTURE_2D, m_texture[1]);
-    glBindTexture(GL_TEXTURE_2D, m_texture[1]);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[3]);
-    glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
-*/
     m_program->release();
 
     m_xrot+=0.3f;
