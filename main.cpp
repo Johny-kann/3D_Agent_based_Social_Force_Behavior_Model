@@ -4,9 +4,10 @@
 #include "polygonwindow.h"
 #include "traingle.h"
 #include "glcontainer.h"
-#include "openglwindow.h"
+
 #include "texturemapping.h"
 #include "secondwindow.h"
+#include "eperiment.h"
 
 int main(int argc, char *argv[])
 {
@@ -37,6 +38,9 @@ int main(int argc, char *argv[])
 //    GLContainer ww;
  //   ww.setFormat(format);
     ww.show();
+
+  //  Eperiment epr;
+
 
     return a.exec();
 }

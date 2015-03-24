@@ -10,6 +10,9 @@ class TextureMapping : public GLContainer
 public:
     explicit TextureMapping(QWidget *parent = 0);
     ~TextureMapping();
+
+public slots:
+    void timeout();
 protected:
     void initialize();
     void render();

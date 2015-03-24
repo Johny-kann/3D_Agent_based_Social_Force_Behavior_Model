@@ -4,6 +4,7 @@
 #include <QOpenGLContext>
 #include <QMatrix4x4>
 #include <QCoreApplication>
+#include <QTimer>
 
 #ifndef GLCONTAINER_H
 #define GLCONTAINER_H
@@ -16,13 +17,15 @@ public:
     GLContainer(QWidget *parent = 0);
     ~GLContainer();
     void setAnimating(bool animating);
+    QTimer *timer;
 
 public slots:
-    void renderLater();
 
     void renderNow();
 
     void signalDetecter();
+
+    void timeout();
 
 
 protected:

@@ -19,8 +19,8 @@ SOURCES += main.cpp\
     traingle.cpp \
     glcontainer.cpp \
     secondwindow.cpp \
-    openglwindow.cpp \
-    texturemapping.cpp
+    texturemapping.cpp \
+    eperiment.cpp
 
 HEADERS  += mainwindow.h \
     myglwidget.h \
@@ -28,8 +28,8 @@ HEADERS  += mainwindow.h \
     traingle.h \
     glcontainer.h \
     secondwindow.h \
-    openglwindow.h \
-    texturemapping.h
+    texturemapping.h \
+    eperiment.h
 
 FORMS    += mainwindow.ui \
     secondwindow.ui

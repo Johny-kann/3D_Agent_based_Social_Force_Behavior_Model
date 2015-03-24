@@ -10,6 +10,9 @@ TextureMapping::TextureMapping(QWidget *parent):
        GLContainer(parent), m_texture(-1), m_xrot(0.0f), m_yrot(0.0f), m_zrot(0.0f)
 {
  //   initialize();
+ //   timer = new QTimer(this);
+    connect(timer,SIGNAL(timeout()),this,SLOT(timeout()));
+  //  timer->start(50);
 }
 
 TextureMapping::~TextureMapping()
@@ -17,6 +20,11 @@ TextureMapping::~TextureMapping()
     glDeleteTextures(1, &m_texture);
     glDeleteBuffers(2, &m_vboIds[0]);
 
+}
+
+void TextureMapping::timeout()
+{
+    qDebug()<<"In Timer slot";
 }
 
 void TextureMapping::initGeometry()
@@ -87,6 +95,8 @@ void TextureMapping::initGeometry()
 
 void TextureMapping::initialize()
 {
+
+
     qDebug()<<"Initiali T";
     initGeometry();
     loadShader();

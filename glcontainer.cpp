@@ -6,7 +6,11 @@ GLContainer::GLContainer(QWidget *parent)
     :QOpenGLWidget(parent),m_update_pending(false),m_animating(false)
 {
   //  initializeOpenGLFunctions();
-  //  glClearColor(0.0f,0.0f,0.0f,0.0f);
+  //  glClearColor(0.0f,0.0f,0.0f,0.0f); timer = new QTimer(this);
+    timer = new QTimer(this);
+ //   connect(timer,SIGNAL(timeout()),this,timeout());
+ //   timer->start(50);
+    setAnimating(false);
 
 }
 
@@ -25,14 +29,26 @@ void GLContainer::initializeGL()
         qDebug()<<"Init B GL";
          initializeOpenGLFunctions();
          glClearColor(0.0f,0.0f,0.0f,0.0f);
+
+
 }
 
 void GLContainer::setAnimating(bool animating)
 {
     m_animating = animating;
-    if(animating)
+   /* if(animating)
     {
         renderLater();
+    }*/
+    if(animating)
+    {
+        qDebug()<<"Timer on";
+        timer->start(50);
+    }
+    else
+    {
+        qDebug()<<"Timer off";
+        timer->stop();
     }
 }
 
@@ -41,14 +57,9 @@ void GLContainer::signalDetecter()
     qDebug()<<"Signal Detected";
 }
 
-void GLContainer::renderLater()
+void GLContainer::timeout()
 {
-    qDebug()<<"Render Later";
-    if (!m_update_pending)
-    {
-        m_update_pending = true;
-        QCoreApplication::postEvent(this, new QEvent(QEvent::UpdateRequest));
-    }
+
 }
 
 /*
@@ -102,12 +113,7 @@ void GLContainer::renderNow()
     render();
 
  //   m_context->swapBuffers();
-    frameSwapped();
-    if (m_animating)
-    {
-        qDebug()<<"Render now  inside GL";
-        renderLater();
-    }
+ //   frameSwapped();
 
 }
 
