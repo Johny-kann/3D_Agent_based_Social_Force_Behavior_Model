@@ -28,8 +28,9 @@ private:
     QOpenGLShaderProgram *m_program;
     GLuint m_posAttr;
     GLuint m_texCoordAttr;
-    GLuint m_vboIds[2];
-    GLuint m_texture;
+    GLuint m_normalAttr;
+    GLuint m_vboIds[4];
+    GLuint m_texture[2];
     GLfloat m_xrot;
     GLfloat m_yrot;
     GLfloat m_zrot;

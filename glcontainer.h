@@ -45,7 +45,7 @@ protected:
 //   QGLShaderProgram sharderProgram;
  //  QMatrix4x4 m_modelView;
    QMatrix4x4 m_projection;
-
+    QMatrix4x4 m_vMatrix;
    QMatrix4x4 m_modelView;
 
 private:
