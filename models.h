@@ -4,6 +4,8 @@
 class Camera
 {
 private:
+
+
     double translateX;
     double translateY;
     double translateZ;

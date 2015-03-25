@@ -70,7 +70,7 @@ void GLContainer::initializeCamera()
     cameraTransformation.setToIdentity();
 //    double alpha = 20.0;
 //    double beta = 0.0;
-    double distance = 2.5;
+    double distance = 5.5;
     // qDebug()<<QString("alpha %1 beta %2 distance %3").arg(alpha).arg(beta).arg(distance);
     cameraTransformation.rotate(camera->getRotateY(),0,1,0);
     cameraTransformation.rotate(camera->getRotateX(),1,0,0);
@@ -97,15 +97,17 @@ void GLContainer::mouseMoveEvent(QMouseEvent *event)
 
     //    setYRotation(yRot + 8 * dx);
 
-        camera->addRotateX((double)dy/4);
-        camera->addRotateY((double)dx/4);
+        camera->addRotateX(-(double)dy/4);
+        camera->addRotateY(-(double)dx/4);
+
+
 
     } else if (event->buttons() & Qt::RightButton) {
     //    setXRotation(xRot + 8 * dy);
     //    setZRotation(zRot + 8 * dx);
 
-        camera->addRotateX((double)dy/4);
-        camera->addRotateZ((double)dx/4);
+        camera->addRotateX(-(double)dy/4);
+        camera->addRotateZ(-(double)dx/4);
     }
 
 
@@ -189,7 +191,7 @@ void GLContainer::resizeGL(int w,int h)
         glViewport(0, 0, w, h);
     }
     m_projection.setToIdentity();
-    m_projection.perspective(45, (float)w/float(h), 1, 1000);
+    m_projection.perspective(45, (float)w/float(h), 0.1, 1000);
     m_modelView.setToIdentity();
   //  renderNow();
 }

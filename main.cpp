@@ -27,9 +27,9 @@ int main(int argc, char *argv[])
  //   ww.setFormat(format);
 
 
-   MainWindow ww;
+//   MainWindow ww;
 //   SecondWindow ww;
-  //  TextureMapping ww;
+    TextureMapping ww;
  //   ww.setAnimating(true);
   //  ww.renderLater();
  //   MyGLWidget ww;

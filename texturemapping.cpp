@@ -182,32 +182,32 @@ void TextureMapping::render()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    m_modelView.setToIdentity();
-    m_modelView.translate(0.0f, 0.0f, -5.0f);
-    m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
-    m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
-    m_modelView.rotate(m_zrot, 0.0, 0.0, 1.0);
 
     QMatrix4x4 cameraTransformation;
   //  QMatrix4x4 vMatrix;
     m_vMatrix.setToIdentity();
     cameraTransformation.setToIdentity();
 
+
     cameraTransformation.rotate(camera->getRotateY(),0,1,0);
     cameraTransformation.rotate(camera->getRotateX(),1,0,0);
     cameraTransformation.rotate(camera->getRotateZ(),0,0,1);
 
-    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,2.5);
+ //   cameraTransformation.translate(3,0,-5);
+
+
+    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,5);
     QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
 
     m_vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
 
-
+    m_vMatrix.translate(camera->getTranslateX(),camera->getTranslateY(),camera->getTranslateZ());
 
     quintptr offset = 0;
 
     m_modelView.setToIdentity();
     m_modelView.translate(3.0f, 0.0f, -5.0);
+
     m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
     m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
 
@@ -230,9 +230,10 @@ void TextureMapping::render()
     glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
 
 
+
     offset = 0;
     m_modelView.setToIdentity();
-    m_modelView.translate(0.0f, 0.0f, -5.0);
+    m_modelView.translate(0.0f, 0.0f, 0.0);
   m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
     m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
 
