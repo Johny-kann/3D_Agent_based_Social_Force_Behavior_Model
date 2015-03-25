@@ -34,7 +34,7 @@ void TextureMapping::initGeometry()
 {
     glGenBuffers(4, &m_vboIds[0]);
 
-    CubePoints *cube1 = new CubePoints();
+    CubePoints cube1;
 
   /*  VertexData vertices[] =
     {
@@ -89,14 +89,14 @@ void TextureMapping::initGeometry()
 
 
     glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[0]);
-    glBufferData(GL_ARRAY_BUFFER, 24 * sizeof(VertexData), cube1->getVertices(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 24 * sizeof(VertexData), cube1.getVertices(), GL_STATIC_DRAW);
 
     // Transfer index data to VBO 1
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[1]);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 34 * sizeof(GLushort), cube1->getIndices(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 34 * sizeof(GLushort), cube1.getIndices(), GL_STATIC_DRAW);
 
-    CubePoints *cube2 = new CubePoints();
-    /*
+    CubePoints cube2;
+
     VertexData vertices2[] =
     {
         // Vertex data for face 0
@@ -145,16 +145,20 @@ void TextureMapping::initGeometry()
         20, 20, 21, 22, 23      // Face 5 - triangle strip (v20, v21, v22, v23)
     };
 
-    */
+
 
     // Transfer vertex data to VBO 0
 
     glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[2]);
-    glBufferData(GL_ARRAY_BUFFER, 24 * sizeof(VertexData), cube2->getVertices(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 24 * sizeof(VertexData),
+                                    vertices2
+                                        , GL_STATIC_DRAW);
 
     // Transfer index data to VBO 1
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[3]);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 34 * sizeof(GLushort), cube2->getIndices(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 34 * sizeof(GLushort),
+                                    indices2
+                                        , GL_STATIC_DRAW);
 }
 
 /*void TextureMapping::initializeGL()

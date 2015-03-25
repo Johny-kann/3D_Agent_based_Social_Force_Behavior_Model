@@ -3,7 +3,7 @@
 
 
 
-VertexData *CubePoints::getVertices() const
+VertexData *CubePoints::getVertices()
 {
     return vertices;
 }
@@ -13,7 +13,7 @@ void CubePoints::setVertices(VertexData *value)
     vertices = value;
 }
 
-GLushort *CubePoints::getIndices() const
+GLushort *CubePoints::getIndices()
 {
     return indices;
 }
@@ -86,6 +86,11 @@ CubePoints::CubePoints()
         this->indices[i]=indices[i];
     }
 
+
+}
+
+CubePoints::~CubePoints()
+{
 
 }
 

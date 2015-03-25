@@ -72,10 +72,11 @@ private:
 public:
 
    CubePoints();
+   ~CubePoints();
 
-   VertexData *getVertices() const;
+   VertexData *getVertices();
    void setVertices(VertexData *value);
-   GLushort *getIndices() const;
+   GLushort *getIndices();
    void setIndices(GLushort *value);
 };
 
