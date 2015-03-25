@@ -10,6 +10,7 @@
 #include <QMatrix4x4>
 #include "models.h"
 #include <QTimer>
+#include "datapoints.h"
 
 class OpenGLWindow : public QWindow, protected QOpenGLFunctions
 {

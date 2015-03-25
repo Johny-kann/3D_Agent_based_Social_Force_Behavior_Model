@@ -11,6 +11,7 @@
 #include "eperiment.h"
 #include "logics.h"
 #include "eperiment.cpp"
+#include "datapoints.h"
 
 int main(int argc, char *argv[])
 {
@@ -49,6 +50,9 @@ int main(int argc, char *argv[])
     window.setFormat(format);
     window.show();
     window.setAnimating(true);
+
+  //  CubePoints cube1;
+    test t1;
 
     return app.exec();
 }

@@ -1,6 +1,8 @@
 #include <QOpenGLContext>
 #include <QVector2D>
 #include <QVector3D>
+#include <vector>
+#include <QList>
 
 #ifndef DATAPOINTS
 #define DATAPOINTS
@@ -72,12 +74,36 @@ private:
 public:
 
    CubePoints();
-   ~CubePoints();
+  // ~CubePoints();
 
    VertexData *getVertices();
    void setVertices(VertexData *value);
    GLushort *getIndices();
    void setIndices(GLushort *value);
+};
+
+
+class cbPoints
+{
+private:
+
+   QList<VertexData> vertices;
+//    VertexData *vertices;
+    QList<GLushort> indices;
+
+//   GLushort *indices;
+
+
+public:
+
+   cbPoints();
+  // ~CubePoints();
+
+
+   QList<VertexData> getVertices() const;
+   void setVertices(const QList<VertexData> &value);
+   QList<GLushort> getIndices() const;
+   void setIndices(const QList<GLushort> &value);
 };
 
 #endif // DATAPOINTS

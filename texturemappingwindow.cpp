@@ -33,6 +33,7 @@ TextureMappingWindow::~TextureMappingWindow()
 {
     glDeleteTextures(3, &m_texture[0]);
     glDeleteBuffers(2, &m_vboIds[0]);
+
 }
 
 void TextureMappingWindow::timerout()
@@ -57,20 +58,7 @@ void TextureMappingWindow::initialize()
 void TextureMappingWindow::render()
 {
 
-  /*  QMatrix4x4 cameraTransformation;
-  //  QMatrix4x4 vMatrix;
-    m_vMatrix.setToIdentity();
-    cameraTransformation.setToIdentity();
 
-    // qDebug()<<QString("alpha %1 beta %2 distance %3").arg(alpha).arg(beta).arg(distance);
-    cameraTransformation.rotate(alpha,0,1,0);
-    cameraTransformation.rotate(beta,1,0,0);
-
-    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,distance);
-    QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
-
-    m_vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
-*/
     QMatrix4x4 lightTransformation;
     lightTransformation.rotate(lightv, 1, 0, 0);
 
@@ -131,27 +119,6 @@ void TextureMappingWindow::render()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[1]);
     glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
 
-    //----------------------------------------------------------------------------------------------------------
-/*    m_modelView.translate(2.0f, 0.0f, m_z);
-  m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
-    m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
-
-    glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[0]);
-    m_program->enableAttributeArray(m_posAttr);
-    glVertexAttribPointer(m_posAttr, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
-
-    offset += sizeof(QVector3D);
-    m_program->enableAttributeArray(m_normalAttr);
-    glVertexAttribPointer(m_normalAttr, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
-
-    offset += sizeof(QVector3D);
-    m_program->enableAttributeArray(m_texCoordAttr);
-    glVertexAttribPointer(m_texCoordAttr, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
-
-    glBindTexture(GL_TEXTURE_2D, m_texture[m_filter]);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[1]);
-    glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
-    */
 
     offset = 0;
 
@@ -185,8 +152,7 @@ void TextureMappingWindow::render()
 
     m_program->release();
 
-    m_xrot+=m_xspeed;
-    m_yrot+=m_yspeed;
+
 }
 
 void TextureMappingWindow::keyPressEvent(QKeyEvent *event)
@@ -322,55 +288,35 @@ void TextureMappingWindow::loadShader()
 void TextureMappingWindow::initGeometry()
 {
     glGenBuffers(2, &m_vboIds[0]);
+    cbPoints cube1;
 
-    VertexData vertices[] =
+
+    VertexData *vertices = new VertexData[cube1.getVertices().size()];;
+
+    GLushort *indices = new GLushort[cube1.getIndices().size()];
+
+
+  //  VertexData *vert = new VertexData[cube1.getVertices().size()];
+
+    for(int i=0;i<cube1.getVertices().size();i++)
     {
-        // Vertex data for face 0
-        {QVector3D(-1.0, -1.0,  1.0), QVector3D(0.0, 0.0, 1.0), QVector2D(0.0, 0.0)},  // v0
-        {QVector3D( 1.0, -1.0,  1.0), QVector3D(0.0, 0.0, 1.0), QVector2D(1.0, 0.0)}, // v1
-        {QVector3D(-1.0,  1.0,  1.0), QVector3D(0.0, 0.0, 1.0), QVector2D(0.0, 1.0)},  // v2
-        {QVector3D( 1.0,  1.0,  1.0), QVector3D(0.0, 0.0, 1.0), QVector2D(1.0, 1.0)}, // v3
+        vertices[i]=cube1.getVertices().at(i);
+    }
 
-        // Vertex data for face 1
-        {QVector3D( 1.0, -1.0,  1.0), QVector3D(1.0, 0.0, 0.0), QVector2D(0.0, 0.0)}, // v4
-        {QVector3D( 1.0, -1.0, -1.0), QVector3D(1.0, 0.0, 0.0), QVector2D(1.0, 0.0)}, // v5
-        {QVector3D( 1.0,  1.0,  1.0), QVector3D(1.0, 0.0, 0.0), QVector2D(0.0, 1.0)},  // v6
-        {QVector3D( 1.0,  1.0, -1.0), QVector3D(1.0, 0.0, 0.0), QVector2D(1.0, 1.0)}, // v7
+  //  GLushort *ind = new GLushort[cube1.getIndices().size()];
 
-        // Vertex data for face 2
-        {QVector3D( 1.0, -1.0, -1.0), QVector3D(0.0, 0.0, -1.0), QVector2D(0.0, 0.0)}, // v8
-        {QVector3D(-1.0, -1.0, -1.0), QVector3D(0.0, 0.0, -1.0), QVector2D(1.0, 0.0)},  // v9
-        {QVector3D( 1.0,  1.0, -1.0), QVector3D(0.0, 0.0, -1.0), QVector2D(0.0, 1.0)}, // v10
-        {QVector3D(-1.0,  1.0, -1.0), QVector3D(0.0, 0.0, -1.0), QVector2D(1.0, 1.0)},  // v11
+    for(int i=0;i<cube1.getIndices().size();i++)
+    {
+        indices[i]=cube1.getIndices().at(i);
+    }
 
-        // Vertex data for face 3
-        {QVector3D(-1.0, -1.0, -1.0), QVector3D(-1.0, 0.0, 0.0), QVector2D(0.0, 0.0)}, // v12
-        {QVector3D(-1.0, -1.0,  1.0), QVector3D(-1.0, 0.0, 0.0), QVector2D(1.0, 0.0)},  // v13
-        {QVector3D(-1.0,  1.0, -1.0), QVector3D(-1.0, 0.0, 0.0), QVector2D(0.0, 1.0)}, // v14
-        {QVector3D(-1.0,  1.0,  1.0), QVector3D(-1.0, 0.0, 0.0), QVector2D(1.0, 1.0)},  // v15
 
-        // Vertex data for face 4
-        {QVector3D(-1.0, -1.0, -1.0), QVector3D(0.0, -1.0, 0.0), QVector2D(0.0, 0.0)}, // v16
-        {QVector3D( 1.0, -1.0, -1.0), QVector3D(0.0, -1.0, 0.0), QVector2D(1.0, 0.0)}, // v17
-        {QVector3D(-1.0, -1.0,  1.0), QVector3D(0.0, -1.0, 0.0), QVector2D(0.0, 1.0)}, // v18
-        {QVector3D( 1.0, -1.0,  1.0), QVector3D(0.0, -1.0, 0.0), QVector2D(1.0, 1.0)}, // v19
 
-        // Vertex data for face 5
-        {QVector3D(-1.0,  1.0,  1.0), QVector3D(0.0, 1.0, 0.0), QVector2D(0.0, 0.0)}, // v20
-        {QVector3D( 1.0,  1.0,  1.0), QVector3D(0.0, 1.0, 0.0), QVector2D(1.0, 0.0)}, // v21
-        {QVector3D(-1.0,  1.0, -1.0), QVector3D(0.0, 1.0, 0.0), QVector2D(0.0, 1.0)}, // v22
-        {QVector3D( 1.0,  1.0, -1.0), QVector3D(0.0, 1.0, 0.0), QVector2D(1.0, 1.0)}  // v23
-    };
 
-    GLushort indices[] = {
-         0,  1,  2,  3,  3,     // Face 0 - triangle strip ( v0,  v1,  v2,  v3)
-         4,  4,  5,  6,  7,  7, // Face 1 - triangle strip ( v4,  v5,  v6,  v7)
-         8,  8,  9, 10, 11, 11, // Face 2 - triangle strip ( v8,  v9, v10, v11)
-        12, 12, 13, 14, 15, 15, // Face 3 - triangle strip (v12, v13, v14, v15)
-        16, 16, 17, 18, 19, 19, // Face 4 - triangle strip (v16, v17, v18, v19)
-        20, 20, 21, 22, 23      // Face 5 - triangle strip (v20, v21, v22, v23)
-    };
+  //  CubePoints cube1;
+  //  Camera *camera = new Camera(0,0,0,0,0,0,5);
 
+  //  VertexData *vert = cube1.getVertices();
     // Transfer vertex data to VBO 0
     glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[0]);
     glBufferData(GL_ARRAY_BUFFER, 24 * sizeof(VertexData), vertices, GL_STATIC_DRAW);

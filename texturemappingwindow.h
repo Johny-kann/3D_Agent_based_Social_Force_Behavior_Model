@@ -6,6 +6,7 @@
 #include <QOpenGLShaderProgram>
 #include <QTimer>
 
+
 class TextureMappingWindow : public OpenGLWindow
 {
     Q_OBJECT
