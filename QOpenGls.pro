@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     glcontainer.cpp \
     secondwindow.cpp \
     texturemapping.cpp \
-    eperiment.cpp
+    eperiment.cpp \
+    models.cpp
 
 HEADERS  += mainwindow.h \
     myglwidget.h \
@@ -29,7 +30,8 @@ HEADERS  += mainwindow.h \
     glcontainer.h \
     secondwindow.h \
     texturemapping.h \
-    eperiment.h
+    eperiment.h \
+    models.h
 
 FORMS    += mainwindow.ui \
     secondwindow.ui

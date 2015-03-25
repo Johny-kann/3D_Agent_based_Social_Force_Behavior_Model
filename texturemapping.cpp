@@ -12,7 +12,7 @@ TextureMapping::TextureMapping(QWidget *parent):
 {
  //   initialize();
  //   timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),this,SLOT(timeout()));
+  //  connect(timer,SIGNAL(timeout()),this,SLOT(timeout()));
   //  timer->start(50);
 }
 
@@ -176,27 +176,11 @@ void TextureMapping::initializeGL()
 
 void TextureMapping::render()
 {
-    qDebug()<<"TRender";
+   // qDebug()<<"TRender";
 
     m_program->bind();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-/*    m_program->setUniformValue("lightPos", lightTransformation * LightPosition);
-    m_program->setUniformValue("lightDiffuse", LightDiffuse);
-    m_program->setUniformValue("lightAmbient", LightAmbient);
-    m_program->setUniformValue("lightModelAmbient", LightModelAmbient);
-    m_program->setUniformValue("materialDiffuse", MaterialDiffuse);
-    m_program->setUniformValue("materialAmbient", MaterialAmbient);
-    m_program->setUniformValue("enableLight", m_light);
 
-
-    m_modelView.setToIdentity();
-
-    m_modelView.translate(0.0f, 0.0f, -5.0);
-    m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
-    m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
-
-    m_program->setUniformValue("mvMatrix",m_vMatrix * m_modelView);
-*/
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     m_modelView.setToIdentity();
     m_modelView.translate(0.0f, 0.0f, -5.0f);
@@ -208,17 +192,17 @@ void TextureMapping::render()
   //  QMatrix4x4 vMatrix;
     m_vMatrix.setToIdentity();
     cameraTransformation.setToIdentity();
-    double alpha = 0.0;
-    double beta = 0.0;
-    double distance = 2.5;
-    // qDebug()<<QString("alpha %1 beta %2 distance %3").arg(alpha).arg(beta).arg(distance);
-    cameraTransformation.rotate(alpha,0,1,0);
-    cameraTransformation.rotate(beta,1,0,0);
 
-    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,distance);
+    cameraTransformation.rotate(camera->getRotateY(),0,1,0);
+    cameraTransformation.rotate(camera->getRotateX(),1,0,0);
+    cameraTransformation.rotate(camera->getRotateZ(),0,0,1);
+
+    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,2.5);
     QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
 
     m_vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
+
+
 
     quintptr offset = 0;
 
@@ -274,8 +258,8 @@ void TextureMapping::render()
 
     m_program->release();
 
-    m_xrot+=0.3f;
-    m_yrot+=0.2f;
+ //   m_xrot+=0.3f;
+ //   m_yrot+=0.2f;
 //    m_zrot+=0.4f;
 }
 

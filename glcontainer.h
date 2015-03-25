@@ -5,6 +5,8 @@
 #include <QMatrix4x4>
 #include <QCoreApplication>
 #include <QTimer>
+#include <QtWidgets>
+#include "models.h"
 
 #ifndef GLCONTAINER_H
 #define GLCONTAINER_H
@@ -30,6 +32,7 @@ public slots:
 
 protected:
   //  bool event(QEvent *event);
+    Camera *camera;
 
     void initializeGL();
 
@@ -37,21 +40,28 @@ protected:
 
    void paintGL();
 
+   void initializeCamera();
+
    virtual void render();
 
    virtual void initialize();
 
-  //  QMatrix4x4 m_projection;
-//   QGLShaderProgram sharderProgram;
- //  QMatrix4x4 m_modelView;
+   void mousePressEvent(QMouseEvent *event);
+
+   void mouseMoveEvent(QMouseEvent *event);
+
    QMatrix4x4 m_projection;
     QMatrix4x4 m_vMatrix;
    QMatrix4x4 m_modelView;
+
+   QPoint lastPos;
 
 private:
     bool m_update_pending;
     bool m_animating;
     QOpenGLContext *m_context;
+
+
 };
 
 
