@@ -8,28 +8,21 @@
 #include "texturemapping.h"
 #include "secondwindow.h"
 #include "eperiment.h"
+#include "logics.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+ //    QCoreApplication a(argc, argv);
 
- /*   QSurfaceFormat format;
-       format.setDepthBufferSize(24);
-       format.setStencilBufferSize(8);
-       format.setVersion(3, 2);
-       format.setProfile(QSurfaceFormat::CoreProfile);
-       QSurfaceFormat::setDefaultFormat(format);
-*/
-    QSurfaceFormat format;
-    format.setSamples(16);
-
- //   OpenGLWindow ww;
- //   ww.setFormat(format);
+//    QSurfaceFormat format;
+//    format.setSamples(16);
 
 
-//   MainWindow ww;
+
+ //  MainWindow ww;
 //   SecondWindow ww;
-    TextureMapping ww;
+//    TextureMapping ww;
  //   ww.setAnimating(true);
   //  ww.renderLater();
  //   MyGLWidget ww;
@@ -37,7 +30,9 @@ int main(int argc, char *argv[])
  //   Traingle ww;
 //    GLContainer ww;
  //   ww.setFormat(format);
-    ww.show();
+ //   ww.show();
+
+    qDebug()<<Formula::gaussianFunction(2,0);
 
   //  Eperiment epr;
 

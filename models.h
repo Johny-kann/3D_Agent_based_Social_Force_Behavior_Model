@@ -48,5 +48,19 @@ public:
 
 };
 
+class hurdles
+{
+
+private:
+    QVector3D translate;
+
+    QVector3D rotate;
+
+
+
+public:
+
+};
+
 #endif // MODELS
 
