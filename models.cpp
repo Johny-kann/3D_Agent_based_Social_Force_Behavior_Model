@@ -120,3 +120,8 @@ void Camera::setDistance(double distance)
 {
     this->distance = distance;
 }
+
+void Camera::addDistance(double distance)
+{
+    this->distance+=distance;
+}

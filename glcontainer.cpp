@@ -68,18 +68,18 @@ void GLContainer::initializeCamera()
 
     m_vMatrix.setToIdentity();
     cameraTransformation.setToIdentity();
-//    double alpha = 20.0;
-//    double beta = 0.0;
-    double distance = 5.5;
-    // qDebug()<<QString("alpha %1 beta %2 distance %3").arg(alpha).arg(beta).arg(distance);
+
     cameraTransformation.rotate(camera->getRotateY(),0,1,0);
     cameraTransformation.rotate(camera->getRotateX(),1,0,0);
     cameraTransformation.rotate(camera->getRotateZ(),0,0,1);
 
-    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,distance);
+    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,camera->getDistance());
     QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
 
     m_vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
+
+    m_vMatrix.translate(camera->getTranslateX(),camera->getTranslateY(),camera->getTranslateZ());
+
 }
 
 void GLContainer::mousePressEvent(QMouseEvent *event)
@@ -106,9 +106,11 @@ void GLContainer::mouseMoveEvent(QMouseEvent *event)
     //    setXRotation(xRot + 8 * dy);
     //    setZRotation(zRot + 8 * dx);
 
-        camera->addRotateX(-(double)dy/4);
-        camera->addRotateZ(-(double)dx/4);
+      //  camera->addRotateX(-(double)dy/4);
+        camera->addDistance(-(double)dx/4);
+        camera->addRotateZ(-(double)dy/4);
     }
+
 
 
     lastPos = event->pos();

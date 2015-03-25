@@ -183,25 +183,7 @@ void TextureMapping::render()
 
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    QMatrix4x4 cameraTransformation;
-  //  QMatrix4x4 vMatrix;
-    m_vMatrix.setToIdentity();
-    cameraTransformation.setToIdentity();
-
-
-    cameraTransformation.rotate(camera->getRotateY(),0,1,0);
-    cameraTransformation.rotate(camera->getRotateX(),1,0,0);
-    cameraTransformation.rotate(camera->getRotateZ(),0,0,1);
-
- //   cameraTransformation.translate(3,0,-5);
-
-
-    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,camera->getDistance());
-    QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
-
-    m_vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
-
-    m_vMatrix.translate(camera->getTranslateX(),camera->getTranslateY(),camera->getTranslateZ());
+    initializeCamera();
 
     quintptr offset = 0;
 

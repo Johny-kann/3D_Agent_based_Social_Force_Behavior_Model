@@ -44,6 +44,8 @@ public:
     void setDistance(double distance);
     double getDistance();
 
+    void addDistance(double distance);
+
 };
 
 #endif // MODELS
