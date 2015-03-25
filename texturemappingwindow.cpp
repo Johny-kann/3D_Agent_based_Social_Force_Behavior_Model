@@ -6,12 +6,12 @@ double alpha = 0.0;
 double beta = 0.0;
 double distance = 2.5;
 
-struct VertexData
+/*struct VertexData
 {
     QVector3D position;
     QVector3D normal;
     QVector2D texCoord;
-};
+};*/
 
 QVector4D LightAmbient = QVector4D(0.5f, 0.5f, 0.5f, 1.0f);
 QVector4D LightDiffuse = QVector4D(1.0f, 1.0f, 1.0f, 1.0f);
@@ -24,9 +24,9 @@ TextureMappingWindow::TextureMappingWindow(QWindow *parent) :
     OpenGLWindow(parent), m_xrot(0.0f), m_yrot(0.0f), m_xspeed(0.0f),
     m_yspeed(0.0f), m_z(0.0f), m_light(false), m_filter(0)
 {
-    timer = new QTimer(this);
+/*    timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(timerout()));
- //   timer->start(20);
+ //   timer->start(20);*/
 }
 
 TextureMappingWindow::~TextureMappingWindow()
@@ -42,6 +42,7 @@ void TextureMappingWindow::timerout()
 
 void TextureMappingWindow::initialize()
 {
+    qDebug()<<"Initialize";
     initGeometry();
     loadShader();
     loadGLTexture();
@@ -55,15 +56,7 @@ void TextureMappingWindow::initialize()
 
 void TextureMappingWindow::render()
 {
-   /* QMatrix4x4 vMatrix;
-    vMatrix.setToIdentity();
-    QMatrix4x4 cameraTransformation;
-    cameraTransformation.rotate(alpha, 0, 1, 0);
-    cameraTransformation.rotate(beta, 1, 0, 0);
-    QVector3D cameraPosition = cameraTransformation * QVector3D(0, 0, distance);
-    QVector3D cameraUpDirection = cameraTransformation * QVector3D(0, 1, 0);
-    vMatrix.lookAt(cameraPosition, QVector3D(0, 0, 0), cameraUpDirection);
-*/
+
     QMatrix4x4 cameraTransformation;
   //  QMatrix4x4 vMatrix;
     m_vMatrix.setToIdentity();
@@ -107,10 +100,14 @@ void TextureMappingWindow::render()
 
     m_program->setUniformValue("mvMatrix",m_vMatrix * m_modelView);
 
+      initializeCamera();
+
     m_modelView.setToIdentity();
     m_modelView.translate(0.0f, 0.0f, m_z);
   m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
     m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
+
+
 
     m_program->setUniformValue("mvpMatrix", m_projection * m_vMatrix * m_modelView);
 

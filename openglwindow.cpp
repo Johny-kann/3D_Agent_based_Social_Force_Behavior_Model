@@ -9,6 +9,17 @@ OpenGLWindow::OpenGLWindow(QWindow *parent) :
 {
     setSurfaceType(QWindow::OpenGLSurface);
     resize(640, 480);
+
+    camera = new Camera(
+                0.0,0.0,0.0,0.0,0.0,0.0,5.5);
+
+    timer = new QTimer(this);
+    connect(timer,SIGNAL(timeout()),this,SLOT(timeout()));
+  //  timer->start(50);
+
+    setAnimating(true);
+
+    initializeCamera();
 }
 
 OpenGLWindow::~OpenGLWindow()
@@ -41,12 +52,56 @@ void OpenGLWindow::resizeGL(int w, int h)
     m_modelView.setToIdentity();
 }
 
+void OpenGLWindow::mousePressEvent(QMouseEvent *event)
+{
+    lastPos = event->pos();
+}
+
+void OpenGLWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    int dx = event->x() - lastPos.x();
+    int dy = event->y() - lastPos.y();
+
+    if (event->buttons() & Qt::LeftButton) {
+    //    setXRotation(xRot + 8 * dy);
+
+    //    setYRotation(yRot + 8 * dx);
+
+        camera->addRotateX(-(double)dy/4);
+        camera->addRotateY(-(double)dx/4);
+
+
+
+    } else if (event->buttons() & Qt::RightButton) {
+    //    setXRotation(xRot + 8 * dy);
+    //    setZRotation(zRot + 8 * dx);
+
+      //  camera->addRotateX(-(double)dy/4);
+        camera->addDistance(-(double)dx/4);
+        camera->addRotateZ(-(double)dy/4);
+    }
+
+
+
+    lastPos = event->pos();
+}
+
 void OpenGLWindow::setAnimating(bool animating)
 {
     m_animating = animating;
-    if(animating)
+   /* if(animating)
     {
         renderLater();
+    }*/
+    if(animating)
+    {
+   //     qDebug()<<"Timer on";
+        timer->start(50);
+    }
+    else
+    {
+     //   qDebug()<<"Timer off";
+        timer->stop();
     }
 }
 
@@ -86,8 +141,13 @@ void OpenGLWindow::renderNow()
 
     m_context->swapBuffers(this);
 
-    if (m_animating)
-        renderLater();
+ //   if (m_animating)
+   //     renderLater();
+}
+
+void OpenGLWindow::timeout()
+{
+    renderLater();
 }
 
 bool OpenGLWindow::event(QEvent *event)
@@ -146,5 +206,25 @@ void OpenGLWindow::keyPressEvent(QKeyEvent *event)
         }
     }
     QWindow::keyPressEvent(event);
+}
+
+void OpenGLWindow::initializeCamera()
+{
+    QMatrix4x4 cameraTransformation;
+
+    m_vMatrix.setToIdentity();
+    cameraTransformation.setToIdentity();
+
+    cameraTransformation.rotate(camera->getRotateY(),0,1,0);
+    cameraTransformation.rotate(camera->getRotateX(),1,0,0);
+    cameraTransformation.rotate(camera->getRotateZ(),0,0,1);
+
+    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,camera->getDistance());
+    QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
+
+    m_vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
+
+    m_vMatrix.translate(camera->getTranslateX(),camera->getTranslateY(),camera->getTranslateZ());
+
 }
 
