@@ -1,4 +1,5 @@
 #include <QVector3D>
+#include "datapoints.h"
 
 #ifndef MODELS
 #define MODELS
@@ -56,9 +57,12 @@ private:
 
     QVector3D rotate;
 
+    CubePoints *cube;
+
     double strength;
 
     double opaqueDistance;
+
 
 public:
 
@@ -81,6 +85,10 @@ public:
     double getStrength();
 
     double getOpaqueDistance();
+
+
+    CubePoints *getCube() const;
+    void setCube(CubePoints *value);
 };
 
 class Source

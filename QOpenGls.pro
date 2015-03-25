@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     texturemapping.cpp \
     eperiment.cpp \
     models.cpp \
-    logics.cpp
+    logics.cpp \
+    datapoints.cpp
 
 HEADERS  += mainwindow.h \
     myglwidget.h \
@@ -33,7 +34,8 @@ HEADERS  += mainwindow.h \
     texturemapping.h \
     eperiment.h \
     models.h \
-    logics.h
+    logics.h \
+    datapoints.h
 
 FORMS    += mainwindow.ui \
     secondwindow.ui

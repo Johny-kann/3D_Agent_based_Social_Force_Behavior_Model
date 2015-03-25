@@ -201,6 +201,20 @@ double Source::getSpeed()
 //-----------------------------------Hurdles-------------------
 
 
+
+
+
+CubePoints *Hurdles::getCube() const
+{
+    return cube;
+}
+
+void Hurdles::setCube(CubePoints *value)
+{
+    cube = value;
+}
+
+
 void Hurdles::setTranslate(double transX, double transY, double transZ)
 {
     this->translate.setX(transX);
