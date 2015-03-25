@@ -113,34 +113,28 @@ public:
 
     Source();
 
-    Source()(double transx,double transy,double transz,double rotx,double roty,double rotz,double strength,double opaqueDistance);
+    Source(double transx,double transy,double transz,double rotx,double roty,double rotz,double strength,double opaqueDistance);
 
-    void setTranslate(double transX,double transY,double transZ);
+    void setTranslateAll(double transX,double transY,double transZ);
 
-    void setRotate(double rotX,double rotY,double rotZ);
+    void setRotateAll(double rotX,double rotY,double rotZ);
 
-    void setDestinationPos(QVector3D *dest);
 
-    void setStrength(double strength);
 
-    void setSpeed(double speed);
-
-    void setOpaqueDistance(double opaqueDistance);
-
-    QVector3D getTransPos();
-
-    QVector3D getRotatePos();
-
-    QVector3D getDestination();
-
-    QVector3D getVelocity();
-
-    double getStrength();
-
-    double getOpaqueDistance();
-
-    double getSpeed();
-
+    double getStrength() const;
+    void setStrength(double value);
+    double getSpeed() const;
+    void setSpeed(double value);
+    double getOpaqueDistance() const;
+    void setOpaqueDistance(double value);
+    QVector3D *getDestinationPos() const;
+    void setDestinationPos(QVector3D *value);
+    QVector3D getVelocity() const;
+    void setVelocity(const QVector3D &value);
+    QVector3D getTranslate() const;
+    void setTranslate(const QVector3D &value);
+    QVector3D getRotate() const;
+    void setRotate(const QVector3D &value);
 };
 
 

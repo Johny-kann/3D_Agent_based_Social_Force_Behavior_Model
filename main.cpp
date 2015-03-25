@@ -9,6 +9,7 @@
 #include "secondwindow.h"
 #include "eperiment.h"
 #include "logics.h"
+#include "eperiment.cpp"
 
 int main(int argc, char *argv[])
 {
@@ -35,7 +36,13 @@ int main(int argc, char *argv[])
 //    qDebug()<<Formula::gaussianFunction(2,0);
 
   //  Eperiment epr;
+//    test tt;
+
 
 
     return a.exec();
 }
+
+
+
+

@@ -128,7 +128,77 @@ void Camera::addDistance(double distance)
 
 //-----------------------Source---------------------------
 
-void Source::setTranslate(double transX, double transY, double transZ)
+
+double Source::getStrength() const
+{
+    return strength;
+}
+
+void Source::setStrength(double value)
+{
+    strength = value;
+}
+
+double Source::getSpeed() const
+{
+    return speed;
+}
+
+void Source::setSpeed(double value)
+{
+    speed = value;
+}
+
+double Source::getOpaqueDistance() const
+{
+    return opaqueDistance;
+}
+
+void Source::setOpaqueDistance(double value)
+{
+    opaqueDistance = value;
+}
+
+QVector3D *Source::getDestinationPos() const
+{
+    return destinationPos;
+}
+
+void Source::setDestinationPos(QVector3D *value)
+{
+    destinationPos = value;
+}
+
+QVector3D Source::getVelocity() const
+{
+    return velocity;
+}
+
+void Source::setVelocity(const QVector3D &value)
+{
+    velocity = value;
+}
+
+QVector3D Source::getTranslate() const
+{
+    return translate;
+}
+
+void Source::setTranslate(const QVector3D &value)
+{
+    translate = value;
+}
+
+QVector3D Source::getRotate() const
+{
+    return rotate;
+}
+
+void Source::setRotate(const QVector3D &value)
+{
+    rotate = value;
+}
+void Source::setTranslateAll(double transX, double transY, double transZ)
 {
     this->translate.setX(transX);
     this->translate.setY(transY);
@@ -136,67 +206,14 @@ void Source::setTranslate(double transX, double transY, double transZ)
 
 }
 
-void Source::setRotate(double rotX, double rotY, double rotZ)
+void Source::setRotateAll(double rotX, double rotY, double rotZ)
 {
     this->rotate.setX(rotX);
     this->rotate.setY(rotY);
     this->rotate.setZ(rotZ);
 }
 
-void Source::setDestinationPos(QVector3D *dest)
-{
-    this->destinationPos = dest;
-}
 
-void Source::setStrength(double strength)
-{
-    this->strength = strength;
-}
-
-void Source::setSpeed(double speed)
-{
-    this->speed = speed;
-}
-
-void Source::setOpaqueDistance(double opaqueDistance)
-{
-    this->opaqueDistance = opaqueDistance;
-}
-
-QVector3D Source::getTransPos()
-{
-    return this->translate;
-}
-
-QVector3D Source::getRotatePos()
-{
-    return this->rotate;
-}
-
-QVector3D Source::getDestination()
-{
-    return this->destinationPos;
-}
-
-QVector3D Source::getVelocity()
-{
-    return this->velocity;
-}
-
-double Source::getStrength()
-{
-   return this->strength;
-}
-
-double Source::getOpaqueDistance()
-{
-    return this->opaqueDistance;
-}
-
-double Source::getSpeed()
-{
-    return this->speed;
-}
 
 //-----------------------------------Hurdles-------------------
 
