@@ -241,8 +241,8 @@ void TextureMapping::render()
 
     m_program->release();
 
- //   m_xrot+=0.3f;
- //   m_yrot+=0.2f;
+   // m_xrot+=0.3f;
+  //  m_yrot+=0.3f;
 //    m_zrot+=0.4f;
 }
 

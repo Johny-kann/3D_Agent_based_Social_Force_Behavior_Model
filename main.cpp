@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 
  //  MainWindow ww;
 //   SecondWindow ww;
-//    TextureMapping ww;
+    TextureMapping ww;
  //   ww.setAnimating(true);
   //  ww.renderLater();
  //   MyGLWidget ww;
@@ -30,9 +30,9 @@ int main(int argc, char *argv[])
  //   Traingle ww;
 //    GLContainer ww;
  //   ww.setFormat(format);
- //   ww.show();
+    ww.show();
 
-    qDebug()<<Formula::gaussianFunction(2,0);
+//    qDebug()<<Formula::gaussianFunction(2,0);
 
   //  Eperiment epr;
 

@@ -48,7 +48,7 @@ public:
 
 };
 
-class hurdles
+class Hurdles
 {
 
 private:
@@ -56,11 +56,85 @@ private:
 
     QVector3D rotate;
 
+    double strength;
 
+    double opaqueDistance;
 
 public:
 
+    Hurdles();
+
+    Hurdles(double transx,double transy,double transz,double rotx,double roty,double rotz,double strength,double opaqueDistance);
+
+    void setTranslate(double transX,double transY,double transZ);
+
+    void setRotate(double rotX,double rotY,double rotZ);
+
+    void setStrength(double strength);
+
+    void setOpaqueDistance(double opaqueDistance);
+
+    QVector3D getTransPos();
+
+    QVector3D getRotatePos();
+
+    double getStrength();
+
+    double getOpaqueDistance();
 };
+
+class Source
+{
+
+private:
+    QVector3D translate;
+
+    QVector3D rotate;
+
+    QVector3D velocity;
+
+    QVector3D *destinationPos;
+
+    double strength;
+
+    double speed;
+
+    double opaqueDistance;
+
+public:
+
+    Source();
+
+    Source()(double transx,double transy,double transz,double rotx,double roty,double rotz,double strength,double opaqueDistance);
+
+    void setTranslate(double transX,double transY,double transZ);
+
+    void setRotate(double rotX,double rotY,double rotZ);
+
+    void setDestinationPos(QVector3D *dest);
+
+    void setStrength(double strength);
+
+    void setSpeed(double speed);
+
+    void setOpaqueDistance(double opaqueDistance);
+
+    QVector3D getTransPos();
+
+    QVector3D getRotatePos();
+
+    QVector3D getDestination();
+
+    QVector3D getVelocity();
+
+    double getStrength();
+
+    double getOpaqueDistance();
+
+    double getSpeed();
+
+};
+
 
 #endif // MODELS
 
