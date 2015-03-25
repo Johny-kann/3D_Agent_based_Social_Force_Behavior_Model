@@ -1,106 +1,122 @@
 #include "models.h"
 
-Camera::Camera(double translateX, double translateY, double translateZ, double rotateX, double rotateY, double rotateZ)
+Camera::Camera(double translateX, double translateY, double translateZ, double rotateX, double rotateY, double rotateZ,double distance)
 {
-    this->translateX = translateX;
-    this->translateY = translateY;
-    this->translateZ = translateZ;
+    translate.setX(translateX);
+    translate.setY(translateY);
+    translate.setZ(translateZ);
 
-    this->rotateX = rotateX;
-    this->rotateY = rotateY;
-    this->rotateZ = rotateZ;
+    rotate.setX(rotateX);
+    rotate.setY(rotateY);
+    rotate.setZ(rotateZ);
+
+    setDistance(distance);
 
 }
 
 void Camera::setTranslateX(double x){
 
-    translateX = x;
+   translate.setX(x);
+
 }
 
 void Camera::setTranslateY(double y){
 
-    translateY = y;
+    translate.setY(y);
 }
 
 void Camera::setTranslateZ(double z){
 
-    translateZ = z;
+    translate.setZ(z);
 }
 
 void Camera::addTranslateX(double x)
 {
-    translateX+=x;
+    translate.setX(translate.x()+x);
+ //   translateX+=x;
 }
 
 void Camera::addTranslateY(double y)
 {
-    translateY+=y;
+    translate.setY(translate.y()+y);
+   // translateY+=y;
 }
 
 void Camera::addTranslateZ(double z)
 {
-    translateZ+=z;
+    translate.setZ(translate.z()+z);
+    //translateZ+=z;
 }
 
 
 void Camera::setRotateX(double x)
 {
-    rotateX = x;
+    rotate.setX(x);
 }
 
 void Camera::setRotateY(double y)
 {
-    rotateY = y;
+    rotate.setY(y);
 }
 
 void Camera::setRotateZ(double z)
 {
-    rotateZ = z;
+    rotate.setZ(z);
 }
 
 void Camera::addRotateX(double x)
 {
-    rotateX+=x;
+    rotate.setX(rotate.x()+x);
 }
 
 void Camera::addRotateY(double y)
 {
-    rotateY+=y;
+    rotate.setY(rotate.y()+y);
 }
 
 void Camera::addRotateZ(double z)
 {
-    rotateZ+=z;
+    rotate.setZ(rotate.z()+z);
 }
 
 double Camera::getTranslateX()
 {
-    return translateX;
+    return translate.x();
 }
 
 
 double Camera::getTranslateY()
 {
-    return translateY;
+    return translate.y();
 }
 
 double Camera::getTranslateZ()
 {
-    return translateZ;
+    return translate.z();
 }
 
 double Camera::getRotateX()
 {
-    return rotateX;
+    return rotate.x();
 }
 
 
 double Camera::getRotateY()
 {
-    return rotateY;
+    return rotate.y();
 }
 
 double Camera::getRotateZ()
 {
-    return rotateZ;
+    return rotate.z();
+}
+
+double Camera::getDistance()
+{
+    return distance;
+}
+
+void Camera::setDistance(double distance)
+{
+    this->distance = distance;
 }

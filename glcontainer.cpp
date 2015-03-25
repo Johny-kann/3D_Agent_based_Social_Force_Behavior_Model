@@ -7,7 +7,7 @@ GLContainer::GLContainer(QWidget *parent)
 {
 
     camera = new Camera(
-                0.0,0.0,0.0,0.0,0.0,0.0);
+                0.0,0.0,0.0,0.0,0.0,0.0,5.5);
 
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(timeout()));

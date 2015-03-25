@@ -196,7 +196,7 @@ void TextureMapping::render()
  //   cameraTransformation.translate(3,0,-5);
 
 
-    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,5);
+    QVector3D cameraPosition = cameraTransformation*QVector3D(0,0,camera->getDistance());
     QVector3D cameraUpDirection = cameraTransformation*QVector3D(0,1,0);
 
     m_vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);

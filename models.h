@@ -1,3 +1,5 @@
+#include <QVector3D>
+
 #ifndef MODELS
 #define MODELS
 
@@ -5,17 +7,14 @@ class Camera
 {
 private:
 
+    QVector3D translate;
 
-    double translateX;
-    double translateY;
-    double translateZ;
+    QVector3D rotate;
 
-    double rotateX;
-    double rotateY;
-    double rotateZ;
+    double distance;
 
 public:
-    Camera(double translateX,double translateY,double translateZ,double rotateX,double rotateY,double rotateZ);
+    Camera(double translateX,double translateY,double translateZ,double rotateX,double rotateY,double rotateZ,double distance);
     ~Camera();
     void setTranslateX(double x);
     void setTranslateY(double y);
@@ -42,10 +41,8 @@ public:
     double getTranslateY();
     double getTranslateZ();
 
-  /*  double getRotateX();
-    double getRotateY();
-    double getRotateZ();
-    */
+    void setDistance(double distance);
+    double getDistance();
 
 };
 
