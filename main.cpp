@@ -1,19 +1,20 @@
 #include "mainwindow.h"
 #include "myglwidget.h"
 #include <QApplication>
-#include "polygonwindow.h"
+
 #include "traingle.h"
 #include "glcontainer.h"
 
 #include "texturemapping.h"
-#include "secondwindow.h"
+#include "texturemappingwindow.h"
+
 #include "eperiment.h"
 #include "logics.h"
 #include "eperiment.cpp"
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+  /*  QApplication a(argc, argv);
  //    QCoreApplication a(argc, argv);
 
 //    QSurfaceFormat format;
@@ -21,9 +22,9 @@ int main(int argc, char *argv[])
 
 
 
- //  MainWindow ww;
+   MainWindow ww;
 //   SecondWindow ww;
-    TextureMapping ww;
+ //   TextureMapping ww;
  //   ww.setAnimating(true);
   //  ww.renderLater();
  //   MyGLWidget ww;
@@ -38,9 +39,18 @@ int main(int argc, char *argv[])
   //  Eperiment epr;
 //    test tt;
 
+*/
+    QGuiApplication app(argc, argv);
 
+    QSurfaceFormat format;
+    format.setSamples(16);
 
-    return a.exec();
+    TextureMappingWindow window;
+    window.setFormat(format);
+    window.show();
+    window.setAnimating(true);
+
+    return app.exec();
 }
 
 

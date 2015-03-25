@@ -15,27 +15,27 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     myglwidget.cpp \
-    polygonwindow.cpp \
     traingle.cpp \
     glcontainer.cpp \
-    secondwindow.cpp \
     texturemapping.cpp \
     eperiment.cpp \
     models.cpp \
     logics.cpp \
-    datapoints.cpp
+    datapoints.cpp \
+    openglwindow.cpp \
+    texturemappingwindow.cpp
 
 HEADERS  += mainwindow.h \
     myglwidget.h \
-    polygonwindow.h \
     traingle.h \
     glcontainer.h \
-    secondwindow.h \
     texturemapping.h \
     eperiment.h \
     models.h \
     logics.h \
-    datapoints.h
+    datapoints.h \
+    texturemappingwindow.h \
+    openglwindow.h
 
 FORMS    += mainwindow.ui \
     secondwindow.ui
