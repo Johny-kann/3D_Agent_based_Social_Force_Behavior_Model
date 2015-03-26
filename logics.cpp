@@ -15,19 +15,11 @@ double Formula::randomNumber(int max)
 }
 
 
-/*
-void LogicalClass::addHurdlesRandomly(World world, int numberOfObjecs, int maxX, int maxZ)
-{
-    for(int i=0; i<numberOfObjecs; i++)
-    {
-   //   world.getHurdlesList().at(i);
-    //    world.getHurdlesList().at(i).setTranslate(Formula::randomNumber(maxX),0,Formula::randomNumber(maxZ));
 
 
-    }
-}
-*/
-/*void LogicalClass::addHurdles(World world, int numberOfObjects, int opaqueDistance, int strength,QString str)
+
+
+void LogicClass::addHurdlesToWorld(World &world, int numberOfObjects, int opaqueDistance, int strength,QString str)
 {
     for(int i=0; i<numberOfObjects; i++)
     {
@@ -42,13 +34,14 @@ void LogicalClass::addHurdlesRandomly(World world, int numberOfObjecs, int maxX,
         world.addHurdles(hurdle);
 
     }
-
 }
-*/
 
-
-
-void LogicClass::addHurdlesToWorld(World world, int numberOfObjects, int opaqueDistance, int strength)
+void LogicClass::addHurdlePosRandom(World &world, int max)
 {
-    //   Hurdles hh;
+    for(int i=0; i<world.getHurdlesList().size() ; i++)
+    {
+   //     new Hurdles().setTranslate(Formula::randomNumber(max),0.0,Formula::randomNumber(max));
+
+        world.getHurdlesList().operator [](i).setTranslate(Formula::randomNumber(max),0.0,Formula::randomNumber(max));
+    }
 }

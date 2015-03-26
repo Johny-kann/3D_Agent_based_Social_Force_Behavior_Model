@@ -44,16 +44,16 @@ int main(int argc, char *argv[])
 //    test tt;
 
 
- //   QGuiApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
  //   QApplication app(argc, argv);
 
-  //  QSurfaceFormat format;
- //   format.setSamples(16);
+    QSurfaceFormat format;
+    format.setSamples(16);
 
-//    TextureMappingWindow window;
-  //  window.setFormat(format);
- //   window.show();
- //   window.setAnimating(true);
+    TextureMappingWindow window;
+    window.setFormat(format);
+    window.show();
+    window.setAnimating(true);
 
   //  CubePoints cube1;
 
@@ -63,10 +63,9 @@ int main(int argc, char *argv[])
   //  dd.show();
     qDebug()<<Formula::randomNumber(50);
 
-    Hurdles hh;
 
-  //  return app.exec();
-    return 0;
+    return app.exec();
+  //  return 0;
 }
 
 

@@ -291,11 +291,18 @@ Hurdles::Hurdles(double transx, double transy, double transz, double rotx, doubl
     this->setOpaqueDistance(opaqueDistance);
 }
 
+/*void Hurdles::setTranslate(double transX, double transY, double transZ)
+{
+    translate.setX(transX);
+    translate.setY(transY);
+    translate.setZ(transZ);
+}
+*/
 void Hurdles::setTranslate(double transX, double transY, double transZ)
 {
-    this->translate.setX(transX);
-    this->translate.setY(transY);
-    this->translate.setZ(transZ);
+    translate.setX(transX);
+    translate.setY(transY);
+    translate.setZ(transZ);
 
 }
 
