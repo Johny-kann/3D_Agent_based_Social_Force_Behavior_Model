@@ -238,11 +238,8 @@ void Movers::setRotateAll(double rotX, double rotY, double rotZ)
 
 //-----------------------------------Hurdles-------------------
 
-
-
-
-
-CubePoints *Hurdles::getCube() const
+/*
+cubePoints *Hurdles::getCube() const
 {
     return cube;
 }
@@ -252,7 +249,7 @@ void Hurdles::setCube(CubePoints *value)
     cube = value;
 }
 
-
+*/
 
 QString Hurdles::getTextureImage() const
 {

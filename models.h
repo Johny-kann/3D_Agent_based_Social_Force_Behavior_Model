@@ -57,8 +57,6 @@ private:
 
     QVector3D rotate;
 
-    CubePoints *cube;
-
     QString textureImage;
 
     double strength;
@@ -89,8 +87,9 @@ public:
     double getOpaqueDistance();
 
 
-    CubePoints *getCube() const;
-    void setCube(CubePoints *value);
+   // CubePoints *getCube() const;
+  //  void setCube(CubePoints *value);
+
     QString getTextureImage() const;
     void setTextureImage(const QString &value);
 };

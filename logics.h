@@ -12,7 +12,8 @@ public:
 
 class LogicClass
 {
-    static void addHurdlesToWorld(World &world, int numberOfObjects, int opaqueDistance, int strength, QString str);
+  public:
+    static void addHurdlesToWorld(World &world, int numberOfObjects, double opaqueDistance, double strength, QString str);
     static void addHurdlePosRandom(World &world,int max);
 };
 

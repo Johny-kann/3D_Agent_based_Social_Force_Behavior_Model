@@ -41,10 +41,10 @@ public:
 class constants
 {
 public:
-    const int NO_OF_OBJECTS = 10;
-    const int HURDLE_STRENGTH = 4;
-    const int HURDLE_OPAQUE_DISTANCE = 2;
-    const QString HURDLE_IMAGE = ":/image/Crate.bmp";
+    static const int NO_OF_OBJECTS;
+    static const double HURDLE_STRENGTH;
+    static const double HURDLE_OPAQUE_DISTANCE;
+    static const QString HURDLE_IMAGE ;
 
 };
 
