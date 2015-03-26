@@ -56,7 +56,7 @@ void TextureMappingWindow::initialize()
     qDebug()<<"Initialize";
     initGeometry();
     loadShader();
-    loadGLTexture();
+    loadGLTexture(world.getHurdlesList().operator [](0).getTextureImage());
     glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
     glClearDepthf(1.0);
     glEnable(GL_TEXTURE_2D);
@@ -78,7 +78,7 @@ void TextureMappingWindow::render()
     for(int i=0 ; i<world.getHurdlesList().size();i++)
     {
 
-
+  //  loadGLTexture(world.getHurdlesList().operator [](i).getTextureImage());
     m_program->setUniformValue("lightPos", lightTransformation * LightPosition);
     m_program->setUniformValue("lightDiffuse", LightDiffuse);
     m_program->setUniformValue("lightAmbient", LightAmbient);
@@ -212,31 +212,31 @@ void TextureMappingWindow::keyPressEvent(QKeyEvent *event)
     }
         case Qt::Key_Up:
         {
-            m_xspeed-=0.01f;
+            camera->addTranslateX(0.5f);
             break;
         }
         case Qt::Key_Down:
         {
-            m_xspeed+=0.01f;
+            camera->addTranslateX(-0.5f);
             break;
         }
         case Qt::Key_Right:
         {
-            m_yspeed+=0.01f;
+            camera->addTranslateZ(0.5f);
             break;
         }
         case Qt::Key_Left:
         {
-            m_yspeed-=0.01f;
+            camera->addTranslateZ(-0.5f);
             break;
         }
     }
     OpenGLWindow::keyPressEvent(event);
 }
 
-void TextureMappingWindow::loadGLTexture()
+void TextureMappingWindow::loadGLTexture(QString imageLoc)
 {
-    QImage image(":/image/Crate.bmp");
+    QImage image(imageLoc);
     image = image.convertToFormat(QImage::Format_RGB888);
     image = image.mirrored();
 

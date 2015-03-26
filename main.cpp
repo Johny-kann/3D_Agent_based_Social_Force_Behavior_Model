@@ -13,6 +13,7 @@
 #include "eperiment.cpp"
 #include "datapoints.h"
 #include "dummy.h"
+#include "controllers.h"
 
 
 
@@ -44,9 +45,9 @@ int main(int argc, char *argv[])
 //    test tt;
 
 
-    World world;
+//    World world;
 
-    Hurdles hh;
+  /*  Hurdles hh;
 
     hh.setOpaqueDistance(2);
     hh.setRotate(0.0,0.0,0.0);
@@ -74,19 +75,26 @@ int main(int argc, char *argv[])
     world.addHurdles(hh2);
     world.addHurdles(hh3);
 
+*/
+      QGuiApplication app(argc, argv);
 
 
-    QGuiApplication app(argc, argv);
- //   QApplication app(argc, argv);
+  //  Camera *camera = new Camera(
+  //              0.0,0.0,0.0,0.0,0.0,0.0,5.5);
+
+    MainController controller;
+    controller.initializeWorld();
 
     QSurfaceFormat format;
     format.setSamples(16);
 
     TextureMappingWindow window;
-    window.setWorld(world);
+    window.setWorld(controller.getWorld());
     window.setFormat(format);
     window.show();
     window.setAnimating(true);
+
+    controller.showScreen();
 
   //  CubePoints cube1;
 
@@ -94,7 +102,7 @@ int main(int argc, char *argv[])
 
   //  Dummy dd;
   //  dd.show();
-    qDebug()<<Formula::randomNumber(50);
+  //  qDebug()<<Formula::randomNumber(50);
 
 
     return app.exec();

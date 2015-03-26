@@ -1,6 +1,7 @@
 #include "logics.h"
 #include <QtCore/qmath.h>
 #include <QTime>
+#include <QDebug>
 
 double Formula::gaussianFunction(double sigma, double x)
 {
@@ -8,9 +9,9 @@ double Formula::gaussianFunction(double sigma, double x)
 
 }
 
-double Formula::randomNumber(int max)
+double Formula::randomNumber(int max,int seed)
 {
-     qsrand(QTime::currentTime().msec());
+     qsrand(QTime::currentTime().msec()*seed);
     return (double)(qrand()%max);
 }
 
@@ -28,9 +29,11 @@ void LogicClass::addHurdlesToWorld(World &world, int numberOfObjects, double opa
 
         hurdle.setOpaqueDistance(opaqueDistance);
         hurdle.setRotate(0.0,0.0,0.0);
+        hurdle.setTranslate(Formula::randomNumber(50,i),0.0,Formula::randomNumber(50,-i));
         hurdle.setStrength(strength);
         hurdle.setTextureImage(str);
 
+        qDebug()<<hurdle.getTransPos();
         world.addHurdles(hurdle);
 
     }
@@ -42,6 +45,6 @@ void LogicClass::addHurdlePosRandom(World &world, int max)
     {
    //     new Hurdles().setTranslate(Formula::randomNumber(max),0.0,Formula::randomNumber(max));
 
-        world.getHurdlesList().operator [](i).setTranslate(Formula::randomNumber(max),0.0,Formula::randomNumber(max));
+        world.getHurdlesList().operator [](i).setTranslate(Formula::randomNumber(max,i),0.0,Formula::randomNumber(max,i));
     }
 }

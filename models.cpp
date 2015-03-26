@@ -14,6 +14,24 @@ Camera::Camera(double translateX, double translateY, double translateZ, double r
 
 }
 
+Camera::Camera()
+{
+    translate.setX(0.0);
+    translate.setY(0.0);
+    translate.setZ(0.0);
+
+    rotate.setX(0.0);
+    rotate.setY(0.0);
+    rotate.setZ(0.0);
+
+    setDistance(2.5);
+}
+
+Camera::~Camera()
+{
+
+}
+
 void Camera::setTranslateX(double x){
 
    translate.setX(x);

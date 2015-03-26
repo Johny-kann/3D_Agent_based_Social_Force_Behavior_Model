@@ -16,6 +16,7 @@ private:
 
 public:
     Camera(double translateX,double translateY,double translateZ,double rotateX,double rotateY,double rotateZ,double distance);
+    Camera();
     ~Camera();
     void setTranslateX(double x);
     void setTranslateY(double y);

@@ -30,7 +30,7 @@ protected:
     QTimer *timer;
 
 private:
-    void loadGLTexture();
+    void loadGLTexture(QString imageLoc);
 
     void loadShader();
 private:

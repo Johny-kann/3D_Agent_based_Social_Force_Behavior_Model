@@ -1,4 +1,7 @@
 #include "models.h"
+#include <QSurfaceFormat>
+#include "texturemappingwindow.h"
+#include <QOpenGLFunctions>
 
 
 #ifndef CONTROLLERS
@@ -11,10 +14,14 @@ public:
     World world;
 
 public:
-
+    MainController();
+    ~MainController();
     void initializeWorld();
 
     void showScreen();
+
+    World getWorld() const;
+    void setWorld(const World &value);
 };
 
 #endif // CONTROLLERS

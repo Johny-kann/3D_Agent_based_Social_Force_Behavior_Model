@@ -7,7 +7,7 @@ class Formula
 {
 public:
    static double gaussianFunction(double sigma,double x);
-   static double randomNumber(int max);
+   static double randomNumber(int max, int seed);
 };
 
 class LogicClass
