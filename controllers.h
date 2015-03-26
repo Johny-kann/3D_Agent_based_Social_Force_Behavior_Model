@@ -14,6 +14,8 @@ public:
 public:
 
     void initializeWorld();
+
+    void showScreen();
 };
 
 #endif // CONTROLLERS

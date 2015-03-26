@@ -9,4 +9,6 @@ void MainController::initializeWorld()
                                   constants.HURDLE_OPAQUE_DISTANCE,
                                   constants.HURDLE_STRENGTH,constants.HURDLE_IMAGE);
 
+    LogicClass::addHurdlePosRandom(world,50);
+
 }
