@@ -104,7 +104,18 @@ int main(int argc, char *argv[])
   //  dd.show();
   //  qDebug()<<Formula::randomNumber(50);
 
+    World w;
 
+    Hurdles h1;
+    Hurdles h2;
+
+    w.addHurdles(h1);
+    w.addHurdles(h2);
+
+
+    w.getHurdlesList().operator [](0).setTranslate(1.1,1.1,1.1);
+
+    qDebug()<<w.getHurdlesList().operator [](0).getTransPos();
     return app.exec();
   //  return 0;
 }

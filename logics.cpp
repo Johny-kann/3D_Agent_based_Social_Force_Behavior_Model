@@ -16,10 +16,6 @@ double Formula::randomNumber(int max,int seed)
 }
 
 
-
-
-
-
 void LogicClass::addHurdlesToWorld(World &world, int numberOfObjects, double opaqueDistance, double strength, QString str)
 {
     for(int i=0; i<numberOfObjects; i++)
@@ -29,14 +25,17 @@ void LogicClass::addHurdlesToWorld(World &world, int numberOfObjects, double opa
 
         hurdle.setOpaqueDistance(opaqueDistance);
         hurdle.setRotate(0.0,0.0,0.0);
-        hurdle.setTranslate(Formula::randomNumber(50,i),0.0,Formula::randomNumber(50,-i));
+      //  hurdle.setTranslate(Formula::randomNumber(50,i),0.0,Formula::randomNumber(50,-i));
         hurdle.setStrength(strength);
         hurdle.setTextureImage(str);
 
-        qDebug()<<hurdle.getTransPos();
+    //    qDebug()<<hurdle.getTransPos();
+
         world.addHurdles(hurdle);
 
     }
+
+    addHurdlePosRandom(world,30);
 }
 
 void LogicClass::addHurdlePosRandom(World &world, int max)
@@ -45,6 +44,6 @@ void LogicClass::addHurdlePosRandom(World &world, int max)
     {
    //     new Hurdles().setTranslate(Formula::randomNumber(max),0.0,Formula::randomNumber(max));
 
-        world.getHurdlesList().operator [](i).setTranslate(Formula::randomNumber(max,i),0.0,Formula::randomNumber(max,i));
+        world.getHurdlesList().operator [](i).setTranslate(Formula::randomNumber(max,i),0.0,Formula::randomNumber(max,-i));
     }
 }

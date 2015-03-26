@@ -359,7 +359,7 @@ double Hurdles::getOpaqueDistance()
 }
 
 
-QList<Hurdles> World::getHurdlesList() const
+QList<Hurdles> &World::getHurdlesList()
 {
     return hurdlesList;
 }

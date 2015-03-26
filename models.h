@@ -153,7 +153,7 @@ private:
     QList<Movers> sourceList;
 
 public:
-    QList<Hurdles> getHurdlesList() const;
+    QList<Hurdles> &getHurdlesList();
     void setHurdlesList(const QList<Hurdles> &value);
 
     void addHurdles(const Hurdles &hurdle);
