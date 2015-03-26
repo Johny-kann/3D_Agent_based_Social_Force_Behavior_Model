@@ -38,5 +38,15 @@ public:
    void setIndices(const QList<GLushort> &value);
 };
 
+class constants
+{
+public:
+    const int NO_OF_OBJECTS = 10;
+    const int HURDLE_STRENGTH = 4;
+    const int HURDLE_OPAQUE_DISTANCE = 2;
+    const QString HURDLE_IMAGE = ":/image/Crate.bmp";
+
+};
+
 #endif // DATAPOINTS
 

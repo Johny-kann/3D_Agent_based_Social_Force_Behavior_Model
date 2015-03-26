@@ -24,7 +24,9 @@ SOURCES += main.cpp\
     datapoints.cpp \
     openglwindow.cpp \
     texturemappingwindow.cpp \
-    dummy.cpp
+    dummy.cpp \
+    controllers.cpp \
+    constants.cpp
 
 HEADERS  += mainwindow.h \
     myglwidget.h \
@@ -37,7 +39,8 @@ HEADERS  += mainwindow.h \
     datapoints.h \
     texturemappingwindow.h \
     openglwindow.h \
-    dummy.h
+    dummy.h \
+    controllers.h
 
 FORMS    += mainwindow.ui \
     dummy.ui
