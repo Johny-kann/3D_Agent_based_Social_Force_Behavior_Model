@@ -11,7 +11,7 @@ MainController::~MainController()
 
 
 
-World MainController::getWorld() const
+World &MainController::getWorld()
 {
     return world;
 }

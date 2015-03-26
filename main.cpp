@@ -89,11 +89,17 @@ int main(int argc, char *argv[])
     format.setSamples(16);
 
     TextureMappingWindow window;
-    window.setWorld(controller.getWorld());
+    window.setWorld(&controller.getWorld());
     window.setFormat(format);
     window.show();
     window.setAnimating(true);
 
+    Hurdles hh;
+     Hurdles hh2;
+     hh2.setTranslate(1.0,0.0,-3.0);
+
+    controller.getWorld().addHurdles(hh);
+    controller.getWorld().addHurdles(hh2);
     controller.showScreen();
 
   //  CubePoints cube1;

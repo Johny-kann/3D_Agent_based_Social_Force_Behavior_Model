@@ -50,6 +50,28 @@ public:
 
 };
 
+class Objects
+{
+private:
+    QVector3D translate;
+
+    QVector3D rotate;
+
+    QString textureImage;
+public:
+    Objects();
+    Objects(double transX,double transY,double transZ,double rotX,double rotY,double rotZ);
+    void setTranslate(double transX,double transY,double transZ);
+    void setRotate(double rotX,double rotY,double rotZ);
+
+    QVector3D getTranslate() const;
+    void setTranslate(const QVector3D &value);
+    QVector3D getRotate() const;
+    void setRotate(const QVector3D &value);
+    QString getTextureImage() const;
+    void setTextureImage(const QString &value);
+};
+
 class Hurdles
 {
 

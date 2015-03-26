@@ -381,3 +381,54 @@ void World::addSources(const Movers &source)
     this->sourceList.append(source);
 
 }
+
+
+QVector3D Objects::getRotate() const
+{
+    return rotate;
+}
+
+void Objects::setRotate(const QVector3D &value)
+{
+    rotate = value;
+}
+
+QString Objects::getTextureImage() const
+{
+    return textureImage;
+}
+
+void Objects::setTextureImage(const QString &value)
+{
+    textureImage = value;
+}
+Objects::Objects(double transX, double transY, double transZ, double rotX, double rotY, double rotZ)
+{
+    this->setTranslate(transX,transY,transZ);
+    this->setRotate(rotX,rotY,rotZ);
+
+}
+
+void Objects::setTranslate(double transX, double transY, double transZ)
+{
+    this->translate.setX(transX);
+    this->translate.setY(transY);
+    this->translate.setZ(transZ);
+}
+
+void Objects::setRotate(double rotX, double rotY, double rotZ)
+{
+    this->rotate.setX(rotX);
+    this->rotate.setY(rotY);
+    this->rotate.setZ(rotZ);
+}
+
+QVector3D Objects::getTranslate() const
+{
+    return translate;
+}
+
+void Objects::setTranslate(const QVector3D &value)
+{
+    translate = value;
+}

@@ -12,14 +12,16 @@ class TextureMappingWindow : public OpenGLWindow
 {
     Q_OBJECT
 private:
-    World world;
+    World *world;
 
 public:
     explicit TextureMappingWindow(QWindow *parent = 0);
     ~TextureMappingWindow();
 
-    World getWorld() const;
-    void setWorld(const World &value);
+
+
+    World *getWorld() const;
+    void setWorld(World *value);
 
 public slots:
     void timerout();

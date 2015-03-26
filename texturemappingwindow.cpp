@@ -21,12 +21,16 @@ QVector4D MaterialDiffuse = QVector4D(0.8f, 0.8f, 0.8f, 1.0f);
 QVector4D MaterialAmbient = QVector4D(0.2f, 0.2f, 0.2f, 1.0f);
 
 
-World TextureMappingWindow::getWorld() const
+
+
+
+
+World *TextureMappingWindow::getWorld() const
 {
     return world;
 }
 
-void TextureMappingWindow::setWorld(const World &value)
+void TextureMappingWindow::setWorld(World *value)
 {
     world = value;
 }
@@ -56,7 +60,7 @@ void TextureMappingWindow::initialize()
     qDebug()<<"Initialize";
     initGeometry();
     loadShader();
-    loadGLTexture(world.getHurdlesList().operator [](0).getTextureImage());
+    loadGLTexture(world->getHurdlesList().operator [](0).getTextureImage());
     glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
     glClearDepthf(1.0);
     glEnable(GL_TEXTURE_2D);
@@ -75,7 +79,7 @@ void TextureMappingWindow::render()
     m_program->bind();
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    for(int i=0 ; i<world.getHurdlesList().size();i++)
+    for(int i=0 ; i<world->getHurdlesList().size();i++)
     {
 
   //  loadGLTexture(world.getHurdlesList().operator [](i).getTextureImage());
@@ -109,11 +113,11 @@ void TextureMappingWindow::render()
 
     m_modelView.setToIdentity();
   //  m_modelView.translate(3.0f, 0.0f, -5.0f);
-    m_modelView.translate(world.getHurdlesList().operator [](i).getTransPos());
+    m_modelView.translate(world->getHurdlesList().operator [](i).getTransPos());
 
-    m_modelView.rotate(world.getHurdlesList().operator [](i).getRotatePos().x(), 1.0, 0.0, 0.0);
-    m_modelView.rotate(world.getHurdlesList().operator [](i).getRotatePos().y(), 0.0, 1.0, 0.0);
-    m_modelView.rotate(world.getHurdlesList().operator [](i).getRotatePos().z(), 0.0, 0.0, 1.0);
+    m_modelView.rotate(world->getHurdlesList().operator [](i).getRotatePos().x(), 1.0, 0.0, 0.0);
+    m_modelView.rotate(world->getHurdlesList().operator [](i).getRotatePos().y(), 0.0, 1.0, 0.0);
+    m_modelView.rotate(world->getHurdlesList().operator [](i).getRotatePos().z(), 0.0, 0.0, 1.0);
 
 
 

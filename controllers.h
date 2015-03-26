@@ -20,7 +20,7 @@ public:
 
     void showScreen();
 
-    World getWorld() const;
+    World &getWorld();
     void setWorld(const World &value);
 };
 
