@@ -52,7 +52,7 @@ public:
 
 class Objects
 {
-private:
+protected:
     QVector3D translate;
 
     QVector3D rotate;
@@ -64,23 +64,18 @@ public:
     void setTranslate(double transX,double transY,double transZ);
     void setRotate(double rotX,double rotY,double rotZ);
 
-    QVector3D getTranslate() const;
+    QVector3D getTranslate();
     void setTranslate(const QVector3D &value);
-    QVector3D getRotate() const;
+    QVector3D &getRotate();
     void setRotate(const QVector3D &value);
     QString getTextureImage() const;
     void setTextureImage(const QString &value);
 };
 
-class Hurdles
+class Hurdles : public Objects
 {
 
 private:
-    QVector3D translate;
-
-    QVector3D rotate;
-
-    QString textureImage;
 
     double strength;
 
@@ -93,17 +88,17 @@ public:
 
     Hurdles(double transx,double transy,double transz,double rotx,double roty,double rotz,double strength,double opaqueDistance);
 
-    void setTranslate(double transX,double transY,double transZ);
+ //   void setTranslate(double transX,double transY,double transZ);
 
-    void setRotate(double rotX,double rotY,double rotZ);
+ //   void setRotate(double rotX,double rotY,double rotZ);
 
     void setStrength(double strength);
 
     void setOpaqueDistance(double opaqueDistance);
 
-    QVector3D getTransPos();
+ //   QVector3D getTransPos();
 
-    QVector3D getRotatePos();
+ //   QVector3D getRotatePos();
 
     double getStrength();
 
@@ -113,8 +108,8 @@ public:
    // CubePoints *getCube() const;
   //  void setCube(CubePoints *value);
 
-    QString getTextureImage() const;
-    void setTextureImage(const QString &value);
+ //   QString getTextureImage() const;
+ //   void setTextureImage(const QString &value);
 };
 
 class Movers

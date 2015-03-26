@@ -268,6 +268,7 @@ void Hurdles::setCube(CubePoints *value)
 }
 
 */
+/*
 
 QString Hurdles::getTextureImage() const
 {
@@ -278,6 +279,8 @@ void Hurdles::setTextureImage(const QString &value)
 {
     textureImage = value;
 }
+
+*/
 Hurdles::Hurdles()
 {
     this->translate.setX(0.0);
@@ -294,14 +297,10 @@ Hurdles::Hurdles()
 
 Hurdles::Hurdles(double transx, double transy, double transz, double rotx, double roty, double rotz, double strength, double opaqueDistance)
 {
-    this->translate.setX(transx);
-    this->translate.setY(transy);
-    this->translate.setZ(transz);
 
-    this->rotate.setX(rotx);
-    this->rotate.setY(roty);
-    this->rotate.setZ(rotz);
 
+    this->setTranslate(transx,transy,transz);
+    this->setRotate(rotx,roty,rotz);
     this->setStrength(strength);
     this->setOpaqueDistance(opaqueDistance);
 }
@@ -312,7 +311,7 @@ Hurdles::Hurdles(double transx, double transy, double transz, double rotx, doubl
     translate.setY(transY);
     translate.setZ(transZ);
 }
-*/
+
 void Hurdles::setTranslate(double transX, double transY, double transZ)
 {
     translate.setX(transX);
@@ -327,7 +326,7 @@ void Hurdles::setRotate(double rotX, double rotY, double rotZ)
     this->rotate.setY(rotY);
     this->rotate.setZ(rotZ);
 }
-
+*/
 void Hurdles::setStrength(double strength)
 {
       this->strength = strength;
@@ -338,6 +337,7 @@ void Hurdles::setOpaqueDistance(double opaqueDistance)
    this->opaqueDistance =opaqueDistance;
 }
 
+/*
 QVector3D Hurdles::getTransPos()
 {
     return this->translate;
@@ -347,7 +347,7 @@ QVector3D Hurdles::getRotatePos()
 {
     return this->rotate;
 }
-
+*/
 double Hurdles::getStrength()
 {
     return this->strength;
@@ -383,7 +383,7 @@ void World::addSources(const Movers &source)
 }
 
 
-QVector3D Objects::getRotate() const
+QVector3D Objects::getRotate()
 {
     return rotate;
 }
@@ -402,6 +402,12 @@ void Objects::setTextureImage(const QString &value)
 {
     textureImage = value;
 }
+Objects::Objects()
+{
+    this->setTranslate(0.0,0.0,0.0);
+    this->setRotate(0.0,0.0,0.0);
+}
+
 Objects::Objects(double transX, double transY, double transZ, double rotX, double rotY, double rotZ)
 {
     this->setTranslate(transX,transY,transZ);
@@ -423,7 +429,7 @@ void Objects::setRotate(double rotX, double rotY, double rotZ)
     this->rotate.setZ(rotZ);
 }
 
-QVector3D Objects::getTranslate() const
+QVector3D Objects::getTranslate()
 {
     return translate;
 }

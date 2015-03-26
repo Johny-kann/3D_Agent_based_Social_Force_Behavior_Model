@@ -113,11 +113,12 @@ void TextureMappingWindow::render()
 
     m_modelView.setToIdentity();
   //  m_modelView.translate(3.0f, 0.0f, -5.0f);
-    m_modelView.translate(world->getHurdlesList().operator [](i).getTransPos());
 
-    m_modelView.rotate(world->getHurdlesList().operator [](i).getRotatePos().x(), 1.0, 0.0, 0.0);
-    m_modelView.rotate(world->getHurdlesList().operator [](i).getRotatePos().y(), 0.0, 1.0, 0.0);
-    m_modelView.rotate(world->getHurdlesList().operator [](i).getRotatePos().z(), 0.0, 0.0, 1.0);
+    m_modelView.translate(world->getHurdlesList().operator [](i).getTranslate());
+
+    m_modelView.rotate(world->getHurdlesList().operator [](i).getRotate().x(), 1.0, 0.0, 0.0);
+    m_modelView.rotate(world->getHurdlesList().operator [](i).getRotate().y(), 0.0, 1.0, 0.0);
+    m_modelView.rotate(world->getHurdlesList().operator [](i).getRotate().z(), 0.0, 0.0, 1.0);
 
 
 

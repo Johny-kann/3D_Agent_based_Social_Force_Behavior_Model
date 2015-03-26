@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
 
     w.getHurdlesList().operator [](0).setTranslate(1.1,1.1,1.1);
 
-    qDebug()<<w.getHurdlesList().operator [](0).getTransPos();
+  //  qDebug()<<w.getHurdlesList().operator [](0).getTrans
     return app.exec();
   //  return 0;
 }
