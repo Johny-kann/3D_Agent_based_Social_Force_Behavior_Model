@@ -12,6 +12,7 @@
 #include "logics.h"
 #include "eperiment.cpp"
 #include "datapoints.h"
+#include "dummy.h"
 
 
 
@@ -43,22 +44,29 @@ int main(int argc, char *argv[])
 //    test tt;
 
 
-    QGuiApplication app(argc, argv);
-/*
-    QSurfaceFormat format;
-    format.setSamples(16);
+ //   QGuiApplication app(argc, argv);
+ //   QApplication app(argc, argv);
 
-    TextureMappingWindow window;
-    window.setFormat(format);
-    window.show();
-    window.setAnimating(true);
-*/
+  //  QSurfaceFormat format;
+ //   format.setSamples(16);
+
+//    TextureMappingWindow window;
+  //  window.setFormat(format);
+ //   window.show();
+ //   window.setAnimating(true);
+
   //  CubePoints cube1;
 
-    LogicalClass::addHurdles(*(new World()),3,3,3,"fdjkfjds");
+  //  LogicalClass::addHurdles(*(new World()),3,3,3,"fdjkfjds");
 
-    return app.exec();
-  //  return 0;
+  //  Dummy dd;
+  //  dd.show();
+    qDebug()<<Formula::randomNumber(50);
+
+    Hurdles hh;
+
+  //  return app.exec();
+    return 0;
 }
 
 

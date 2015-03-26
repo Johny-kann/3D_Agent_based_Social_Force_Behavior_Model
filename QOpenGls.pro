@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     logics.cpp \
     datapoints.cpp \
     openglwindow.cpp \
-    texturemappingwindow.cpp
+    texturemappingwindow.cpp \
+    dummy.cpp
 
 HEADERS  += mainwindow.h \
     myglwidget.h \
@@ -35,10 +36,11 @@ HEADERS  += mainwindow.h \
     logics.h \
     datapoints.h \
     texturemappingwindow.h \
-    openglwindow.h
+    openglwindow.h \
+    dummy.h
 
 FORMS    += mainwindow.ui \
-    secondwindow.ui
+    dummy.ui
 
 DISTFILES += \
     fragshader.frag \

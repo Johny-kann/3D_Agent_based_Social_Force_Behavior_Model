@@ -208,6 +208,17 @@ void Movers::setTextureImage(const QString &value)
 {
     textureImage = value;
 }
+Movers::Movers()
+{
+    this->setOpaqueDistance(0);
+    //  this->setRotate();
+}
+
+Movers::Movers(double transx, double transy, double transz, double rotx, double roty, double rotz, double strength, double opaqueDistance)
+{
+
+}
+
 void Movers::setTranslateAll(double transX, double transY, double transZ)
 {
     this->translate.setX(transX);
@@ -252,6 +263,34 @@ void Hurdles::setTextureImage(const QString &value)
 {
     textureImage = value;
 }
+Hurdles::Hurdles()
+{
+    this->translate.setX(0.0);
+    this->translate.setY(0.0);
+    this->translate.setZ(0.0);
+
+    this->rotate.setX(0.0);
+    this->rotate.setY(0.0);
+    this->rotate.setZ(0.0);
+
+    this->setStrength(0.0);
+    this->setOpaqueDistance(0.0);
+}
+
+Hurdles::Hurdles(double transx, double transy, double transz, double rotx, double roty, double rotz, double strength, double opaqueDistance)
+{
+    this->translate.setX(transx);
+    this->translate.setY(transy);
+    this->translate.setZ(transz);
+
+    this->rotate.setX(rotx);
+    this->rotate.setY(roty);
+    this->rotate.setZ(rotz);
+
+    this->setStrength(strength);
+    this->setOpaqueDistance(opaqueDistance);
+}
+
 void Hurdles::setTranslate(double transX, double transY, double transZ)
 {
     this->translate.setX(transX);

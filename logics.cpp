@@ -47,25 +47,8 @@ void LogicalClass::addHurdlesRandomly(World world, int numberOfObjecs, int maxX,
 */
 
 
-void LogicalClass::addHurdlesRandomly(World world, int numberOfObjecs, int maxX, int maxZ)
+
+void LogicClass::addHurdlesToWorld(World world, int numberOfObjects, int opaqueDistance, int strength)
 {
-
-}
-
-void LogicalClass::addHurdles(World world, int numberOfObjects, int opaqueDistance, int strength, QString str)
-{
-    for(int i=0; i<numberOfObjects; i++)
-    {
-     //   world.getHurdlesList().at(i).setTranslate(Formula::randomNumber(maxX),0,Formula::randomNumber(maxZ));
-    /*    Hurdles hurdle;
-        hurdle.setCube(new CubePoints);
-        hurdle.setOpaqueDistance(opaqueDistance);
-        hurdle.setRotate(0.0,0.0,0.0);
-        hurdle.setStrength(strength);
-        hurdle.setTextureImage(str);
-*/
-        Movers *mm = new Movers();
-      //  world.addHurdles(hurdle);
-
-    }
+    //   Hurdles hh;
 }
