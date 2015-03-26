@@ -7,12 +7,19 @@
 #include <QTimer>
 
 
+
 class TextureMappingWindow : public OpenGLWindow
 {
     Q_OBJECT
+private:
+    World world;
+
 public:
     explicit TextureMappingWindow(QWindow *parent = 0);
     ~TextureMappingWindow();
+
+    World getWorld() const;
+    void setWorld(const World &value);
 
 public slots:
     void timerout();

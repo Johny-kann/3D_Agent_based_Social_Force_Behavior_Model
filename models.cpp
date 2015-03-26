@@ -129,76 +129,86 @@ void Camera::addDistance(double distance)
 //-----------------------Source---------------------------
 
 
-double Source::getStrength() const
+double Movers::getStrength() const
 {
     return strength;
 }
 
-void Source::setStrength(double value)
+void Movers::setStrength(double value)
 {
     strength = value;
 }
 
-double Source::getSpeed() const
+double Movers::getSpeed() const
 {
     return speed;
 }
 
-void Source::setSpeed(double value)
+void Movers::setSpeed(double value)
 {
     speed = value;
 }
 
-double Source::getOpaqueDistance() const
+double Movers::getOpaqueDistance() const
 {
     return opaqueDistance;
 }
 
-void Source::setOpaqueDistance(double value)
+void Movers::setOpaqueDistance(double value)
 {
     opaqueDistance = value;
 }
 
-QVector3D *Source::getDestinationPos() const
+QVector3D *Movers::getDestinationPos() const
 {
     return destinationPos;
 }
 
-void Source::setDestinationPos(QVector3D *value)
+void Movers::setDestinationPos(QVector3D *value)
 {
     destinationPos = value;
 }
 
-QVector3D Source::getVelocity() const
+QVector3D Movers::getVelocity() const
 {
     return velocity;
 }
 
-void Source::setVelocity(const QVector3D &value)
+void Movers::setVelocity(const QVector3D &value)
 {
     velocity = value;
 }
 
-QVector3D Source::getTranslate() const
+QVector3D Movers::getTranslate() const
 {
     return translate;
 }
 
-void Source::setTranslate(const QVector3D &value)
+void Movers::setTranslate(const QVector3D &value)
 {
     translate = value;
 }
 
-QVector3D Source::getRotate() const
+QVector3D Movers::getRotate() const
 {
     return rotate;
 }
 
-void Source::setRotate(const QVector3D &value)
+void Movers::setRotate(const QVector3D &value)
 {
     rotate = value;
 }
-void Source::setTranslateAll(double transX, double transY, double transZ)
+
+QString Movers::getTextureImage() const
+{
+    return textureImage;
+}
+
+void Movers::setTextureImage(const QString &value)
+{
+    textureImage = value;
+}
+void Movers::setTranslateAll(double transX, double transY, double transZ)
 {
     this->translate.setX(transX);
     this->translate.setY(transY);
@@ -206,7 +216,7 @@ void Source::setTranslateAll(double transX, double transY, double transZ)
 
 }
 
-void Source::setRotateAll(double rotX, double rotY, double rotZ)
+void Movers::setRotateAll(double rotX, double rotY, double rotZ)
 {
     this->rotate.setX(rotX);
     this->rotate.setY(rotY);
@@ -232,6 +242,16 @@ void Hurdles::setCube(CubePoints *value)
 }
 
 
+
+QString Hurdles::getTextureImage() const
+{
+    return textureImage;
+}
+
+void Hurdles::setTextureImage(const QString &value)
+{
+    textureImage = value;
+}
 void Hurdles::setTranslate(double transX, double transY, double transZ)
 {
     this->translate.setX(transX);
@@ -277,3 +297,26 @@ double Hurdles::getOpaqueDistance()
     return this->opaqueDistance;
 }
 
+
+QList<Hurdles> World::getHurdlesList() const
+{
+    return hurdlesList;
+}
+
+void World::setHurdlesList(const QList<Hurdles> &value)
+{
+    hurdlesList = value;
+}
+
+
+void World::addHurdles(const Hurdles &hurdle)
+{
+    this->hurdlesList.append(hurdle);
+  //  this->getHurdlesList().append(hurdle);
+}
+
+void World::addSources(const Movers &source)
+{
+    this->sourceList.append(source);
+
+}

@@ -20,6 +20,16 @@ QVector4D LightModelAmbient = QVector4D(0.2, 0.2, 0.2, 1.0);
 QVector4D MaterialDiffuse = QVector4D(0.8f, 0.8f, 0.8f, 1.0f);
 QVector4D MaterialAmbient = QVector4D(0.2f, 0.2f, 0.2f, 1.0f);
 
+
+World TextureMappingWindow::getWorld() const
+{
+    return world;
+}
+
+void TextureMappingWindow::setWorld(const World &value)
+{
+    world = value;
+}
 TextureMappingWindow::TextureMappingWindow(QWindow *parent) :
     OpenGLWindow(parent), m_xrot(0.0f), m_yrot(0.0f), m_xspeed(0.0f),
     m_yspeed(0.0f), m_z(0.0f), m_light(false), m_filter(0)
@@ -120,7 +130,7 @@ void TextureMappingWindow::render()
     glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
 
 
-    offset = 0;
+  /*  offset = 0;
 
         m_modelView.setToIdentity();
         m_modelView.translate(0.0f, 0.0f, -5.0f);
@@ -148,7 +158,7 @@ void TextureMappingWindow::render()
         glBindTexture(GL_TEXTURE_2D, m_texture[m_filter]);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[1]);
         glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
-
+*/
 
     m_program->release();
 
@@ -288,7 +298,7 @@ void TextureMappingWindow::loadShader()
 void TextureMappingWindow::initGeometry()
 {
     glGenBuffers(2, &m_vboIds[0]);
-    cbPoints cube1;
+    CubePoints cube1;
 
 
     VertexData *vertices = new VertexData[cube1.getVertices().size()];;

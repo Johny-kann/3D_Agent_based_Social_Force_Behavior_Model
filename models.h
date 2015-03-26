@@ -59,6 +59,8 @@ private:
 
     CubePoints *cube;
 
+    QString textureImage;
+
     double strength;
 
     double opaqueDistance;
@@ -89,9 +91,11 @@ public:
 
     CubePoints *getCube() const;
     void setCube(CubePoints *value);
+    QString getTextureImage() const;
+    void setTextureImage(const QString &value);
 };
 
-class Source
+class Movers
 {
 
 private:
@@ -103,6 +107,8 @@ private:
 
     QVector3D *destinationPos;
 
+    QString textureImage;
+
     double strength;
 
     double speed;
@@ -111,9 +117,9 @@ private:
 
 public:
 
-    Source();
+    Movers();
 
-    Source(double transx,double transy,double transz,double rotx,double roty,double rotz,double strength,double opaqueDistance);
+    Movers(double transx,double transy,double transz,double rotx,double roty,double rotz,double strength,double opaqueDistance);
 
     void setTranslateAll(double transX,double transY,double transZ);
 
@@ -135,8 +141,25 @@ public:
     void setTranslate(const QVector3D &value);
     QVector3D getRotate() const;
     void setRotate(const QVector3D &value);
+    QString getTextureImage() const;
+    void setTextureImage(const QString &value);
 };
 
+class World
+{
+
+private:
+    QList<Hurdles> hurdlesList;
+    QList<Movers> sourceList;
+
+public:
+    QList<Hurdles> getHurdlesList() const;
+    void setHurdlesList(const QList<Hurdles> &value);
+
+    void addHurdles(const Hurdles &hurdle);
+    void addSources(const Movers &source);
+
+};
 
 #endif // MODELS
 
