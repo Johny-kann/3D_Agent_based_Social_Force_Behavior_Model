@@ -79,37 +79,38 @@ void TextureMappingWindow::render()
     m_program->bind();
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+   m_program->setUniformValue("lightPos", lightTransformation * LightPosition);
+   m_program->setUniformValue("lightDiffuse", LightDiffuse);
+   m_program->setUniformValue("lightAmbient", LightAmbient);
+   m_program->setUniformValue("lightModelAmbient", LightModelAmbient);
+   m_program->setUniformValue("materialDiffuse", MaterialDiffuse);
+   m_program->setUniformValue("materialAmbient", MaterialAmbient);
+   m_program->setUniformValue("enableLight", m_light);
+
+
+//   QVector3D lightPosition = lightTransformation * QVector3D(0, 1, 1);
+
+//   QMatrix4x4 vMatrix;
+//   vMatrix.setToIdentity();
+//   vMatrix.rotate(lightv, 0.0, 1.0, 0.0);
+   m_modelView.setToIdentity();
+
+   m_modelView.translate(0.0f, 0.0f, m_z);
+   m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
+   m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
+
+//   m_modelView.rotate(lightv, 0.0, 1.0, 0.0);
+
+   m_program->setUniformValue("mvMatrix",m_vMatrix * m_modelView);
+
+     initializeCamera();
+
+
+
     for(int i=0 ; i<world->getHurdlesList().size();i++)
     {
 
-  //  loadGLTexture(world.getHurdlesList().operator [](i).getTextureImage());
-    m_program->setUniformValue("lightPos", lightTransformation * LightPosition);
-    m_program->setUniformValue("lightDiffuse", LightDiffuse);
-    m_program->setUniformValue("lightAmbient", LightAmbient);
-    m_program->setUniformValue("lightModelAmbient", LightModelAmbient);
-    m_program->setUniformValue("materialDiffuse", MaterialDiffuse);
-    m_program->setUniformValue("materialAmbient", MaterialAmbient);
-    m_program->setUniformValue("enableLight", m_light);
-
-
- //   QVector3D lightPosition = lightTransformation * QVector3D(0, 1, 1);
-
- //   QMatrix4x4 vMatrix;
- //   vMatrix.setToIdentity();
- //   vMatrix.rotate(lightv, 0.0, 1.0, 0.0);
-    m_modelView.setToIdentity();
-
-    m_modelView.translate(0.0f, 0.0f, m_z);
-    m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
-    m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
-
- //   m_modelView.rotate(lightv, 0.0, 1.0, 0.0);
-
-    m_program->setUniformValue("mvMatrix",m_vMatrix * m_modelView);
-
-      initializeCamera();
-
-       quintptr offset = 0;
+  /*     quintptr offset = 0;
 
     m_modelView.setToIdentity();
   //  m_modelView.translate(3.0f, 0.0f, -5.0f);
@@ -141,10 +142,50 @@ void TextureMappingWindow::render()
     glBindTexture(GL_TEXTURE_2D, m_texture[m_filter]);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[1]);
     glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
+    */
+        renderObject(world->getHurdlesList().operator [](i));
 
 }
 
     m_program->release();
+
+
+}
+
+void TextureMappingWindow::renderObject(Objects obj)
+{
+       quintptr offset = 0;
+
+    m_modelView.setToIdentity();
+  //  m_modelView.translate(3.0f, 0.0f, -5.0f);
+
+    m_modelView.translate(obj.getTranslate());
+
+    m_modelView.rotate(obj.getRotate().x(), 1.0, 0.0, 0.0);
+    m_modelView.rotate(obj.getRotate().y(), 0.0, 1.0, 0.0);
+    m_modelView.rotate(obj.getRotate().z(), 0.0, 0.0, 1.0);
+
+
+
+    m_program->setUniformValue("mvpMatrix", m_projection * m_vMatrix * m_modelView);
+
+
+
+    glBindBuffer(GL_ARRAY_BUFFER, m_vboIds[0]);
+    m_program->enableAttributeArray(m_posAttr);
+    glVertexAttribPointer(m_posAttr, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
+
+    offset += sizeof(QVector3D);
+    m_program->enableAttributeArray(m_normalAttr);
+    glVertexAttribPointer(m_normalAttr, 3, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
+
+    offset += sizeof(QVector3D);
+    m_program->enableAttributeArray(m_texCoordAttr);
+    glVertexAttribPointer(m_texCoordAttr, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
+
+    glBindTexture(GL_TEXTURE_2D, m_texture[m_filter]);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[1]);
+    glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
 
 
 }

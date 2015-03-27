@@ -28,6 +28,7 @@ public slots:
 protected:
     void initialize();
     void render();
+    void renderObject(Objects obj);
     void keyPressEvent(QKeyEvent *event);
     QTimer *timer;
 

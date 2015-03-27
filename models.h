@@ -66,7 +66,7 @@ public:
 
     QVector3D getTranslate();
     void setTranslate(const QVector3D &value);
-    QVector3D &getRotate();
+    QVector3D getRotate();
     void setRotate(const QVector3D &value);
     QString getTextureImage() const;
     void setTextureImage(const QString &value);
