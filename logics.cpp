@@ -111,7 +111,9 @@ void LogicClass::addForces(World *world, Movers *movers)
 
     for(int i = 0;i<world->getHurdlesList().size();i++)
     {
+
         calculateIntermediateForce(movers,&world->getHurdlesList().operator [](i));
+
     }
 }
 
@@ -127,10 +129,26 @@ void LogicClass::calculateIntermediateForce(Movers *movers, Hurdles *hurdle)
 
         double force = Formula::gaussianFunction(hurdle->getStrength(),dist);
         repelVector.operator *=(force);
+     /*   double x = repelVector.x();
+        double z = repelVector.z();
+        repelVector.setZ(x);
+        repelVector.setX(z);
+        */
+   //   qDebug()<<repelVector;
+  //      reverseRepel(repelVector);
+   //     qDebug()<<repelVector;
 
         movers->setVelocity(movers->getVelocity()-repelVector);
     }else
     {
         qDebug()<<dist;
     }
+}
+
+void LogicClass::reverseRepel(QVector3D &repelVector)
+{
+    double x = repelVector.x();
+    double z = repelVector.z();
+    repelVector.setZ(x);
+    repelVector.setX(z);
 }
