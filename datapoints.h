@@ -42,10 +42,12 @@ class constants
 {
 public:
     static const int NO_OF_OBJECTS;
+    static const double SIGMA;
     static const double HURDLE_STRENGTH;
     static const double HURDLE_OPAQUE_DISTANCE;
     static const QString HURDLE_IMAGE ;
     static const QString SOURCE_IMAGE;
+    static const double DEST_FORCE;
 
 };
 

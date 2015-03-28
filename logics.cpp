@@ -65,6 +65,7 @@ void LogicClass::calculateVelocity(World *world, Movers *movers)
 
 }
 
+
 void LogicClass::calculateVelocity(World *world)
 {
   //  qDebug()<<"Insides calc";
@@ -74,7 +75,10 @@ void LogicClass::calculateVelocity(World *world)
         if(mov->getMovingState())
         {
         calculateVelocity(world,mov);
-        mov->moveNextStep();
+
+        addForces(world,mov);
+         mov->moveNextStep();
+
         }
 
     }
@@ -96,5 +100,35 @@ void LogicClass::stopSources(World *world)
 
         world->getSourceList().operator [](i).stopMoving();
 
+    }
+}
+
+void LogicClass::addForces(World *world, Movers *movers)
+{
+    movers->setVelocity(constants::DEST_FORCE*movers->getVelocity());
+
+    for(int i = 0;i<world->getHurdlesList().size();i++)
+    {
+        calculateIntermediateForce(movers,&world->getHurdlesList().operator [](i));
+    }
+}
+
+void LogicClass::calculateIntermediateForce(Movers *movers, Hurdles *hurdle)
+{
+    double dist = movers->getTranslate().distanceToPoint(hurdle->getTranslate());
+    dist = dist - (movers->getOpaqueDistance() + movers->getOpaqueDistance());
+
+    if(dist>0)
+    {
+        QVector3D repelVector(hurdle->getTranslate()-movers->getTranslate());
+        repelVector.normalize();
+
+        double force = Formula::gaussianFunction(hurdle->getStrength(),dist);
+        repelVector.operator *=(force);
+
+        movers->setVelocity(movers->getVelocity()-repelVector);
+    }else
+    {
+        qDebug()<<dist;
     }
 }

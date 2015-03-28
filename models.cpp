@@ -382,6 +382,16 @@ void World::setSourceList(const QList<Movers> &value)
 {
     sourceList = value;
 }
+
+Camera &World::getCamera() const
+{
+    return camera;
+}
+
+void World::setCamera(const Camera &value)
+{
+    camera = value;
+}
 QList<Hurdles> &World::getHurdlesList()
 {
     return hurdlesList;

@@ -10,7 +10,7 @@
 class MainController
 {
 public:
-    Camera camera;
+  //  Camera camera;
     World world;
 
 public:

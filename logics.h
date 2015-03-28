@@ -19,6 +19,8 @@ class LogicClass
     static void calculateVelocity(World *world);
     static void moveSources(World *world);
     static void stopSources(World *world);
+    static void addForces(World *world,Movers *movers);
+    static void calculateIntermediateForce(Movers *movers,Hurdles *hurdle);
 };
 
 #endif // LOGICS
