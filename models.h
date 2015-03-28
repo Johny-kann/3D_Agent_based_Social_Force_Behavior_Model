@@ -58,6 +58,9 @@ protected:
     QVector3D rotate;
 
     QString textureImage;
+
+     GLuint m_texture[3];
+
 public:
     Objects();
     Objects(double transX,double transY,double transZ,double rotX,double rotY,double rotZ);
@@ -70,6 +73,9 @@ public:
     void setRotate(const QVector3D &value);
     QString getTextureImage() const;
     void setTextureImage(const QString &value);
+
+    void setTexture(GLuint *texture);
+    GLuint *getTexture();
 };
 
 class Hurdles : public Objects

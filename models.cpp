@@ -402,6 +402,16 @@ void Objects::setTextureImage(const QString &value)
 {
     textureImage = value;
 }
+
+void Objects::setTexture(GLuint *texture)
+{
+    this->m_texture = texture;
+}
+
+GLuint *Objects::getTexture()
+{
+    return this->m_texture;
+}
 Objects::Objects()
 {
     this->setTranslate(0.0,0.0,0.0);
