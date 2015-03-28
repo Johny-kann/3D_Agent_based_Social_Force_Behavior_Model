@@ -197,60 +197,47 @@ void Movers::setVelocity(const QVector3D &value)
     velocity = value;
 }
 
-QVector3D Movers::getTranslate() const
-{
-    return translate;
-}
 
-void Movers::setTranslate(const QVector3D &value)
-{
-    translate = value;
-}
-
-QVector3D Movers::getRotate() const
-{
-    return rotate;
-}
-
-void Movers::setRotate(const QVector3D &value)
-{
-    rotate = value;
-}
-
-QString Movers::getTextureImage() const
-{
-    return textureImage;
-}
-
-void Movers::setTextureImage(const QString &value)
-{
-    textureImage = value;
-}
 Movers::Movers()
 {
-    this->setOpaqueDistance(0);
+    this->translate.setX(0.0);
+    this->translate.setY(0.0);
+    this->translate.setZ(0.0);
+
+    this->rotate.setX(0.0);
+    this->rotate.setY(0.0);
+    this->rotate.setZ(0.0);
+
+    this->setStrength(0.0);
+    this->setOpaqueDistance(0.0);
+    this->setTextureImage(constants::SOURCE_IMAGE);
+ //   this->setOpaqueDistance(0);
     //  this->setRotate();
+
+    this->velocity.setX(0.0);
+    this->velocity.setY(0.0);
+    this->velocity.setZ(0.0);
 }
 
-Movers::Movers(double transx, double transy, double transz, double rotx, double roty, double rotz, double strength, double opaqueDistance)
+Movers::Movers(double transx, double transy, double transz, double rotx, double roty, double rotz, double strength, double opaqueDistance,
+               QVector3D *dest)
 {
+    this->setTranslate(transx,transy,transz);
+    this->setRotate(rotx,roty,rotz);
+    this->setStrength(strength);
+    this->setOpaqueDistance(opaqueDistance);
+
+    this->setTextureImage(constants::SOURCE_IMAGE);
+
+    this->destinationPos = dest;
+    this->speed = 0;
+
+    this->velocity.setX(0.0);
+    this->velocity.setY(0.0);
+    this->velocity.setZ(0.0);
 
 }
 
-void Movers::setTranslateAll(double transX, double transY, double transZ)
-{
-    this->translate.setX(transX);
-    this->translate.setY(transY);
-    this->translate.setZ(transZ);
-
-}
-
-void Movers::setRotateAll(double rotX, double rotY, double rotZ)
-{
-    this->rotate.setX(rotX);
-    this->rotate.setY(rotY);
-    this->rotate.setZ(rotZ);
-}
 
 
 
@@ -293,7 +280,7 @@ Hurdles::Hurdles()
 
     this->setStrength(0.0);
     this->setOpaqueDistance(0.0);
-    this->setTextureImage(constants::SOURCE_IMAGE);
+    this->setTextureImage(constants::HURDLE_IMAGE);
 }
 
 Hurdles::Hurdles(double transx, double transy, double transz, double rotx, double roty, double rotz, double strength, double opaqueDistance)
@@ -305,7 +292,7 @@ Hurdles::Hurdles(double transx, double transy, double transz, double rotx, doubl
     this->setStrength(strength);
     this->setOpaqueDistance(opaqueDistance);
 
-    this->setTextureImage(constants::SOURCE_IMAGE);
+    this->setTextureImage(constants::HURDLE_IMAGE);
 
 }
 
@@ -363,6 +350,16 @@ double Hurdles::getOpaqueDistance()
 }
 
 
+
+QList<Movers> &World::getSourceList()
+{
+    return sourceList;
+}
+
+void World::setSourceList(const QList<Movers> &value)
+{
+    sourceList = value;
+}
 QList<Hurdles> &World::getHurdlesList()
 {
     return hurdlesList;

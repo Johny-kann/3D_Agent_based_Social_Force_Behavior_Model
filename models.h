@@ -118,19 +118,13 @@ public:
  //   void setTextureImage(const QString &value);
 };
 
-class Movers
+class Movers : public Objects
 {
 
 private:
-    QVector3D translate;
-
-    QVector3D rotate;
-
-    QVector3D velocity;
+     QVector3D velocity;
 
     QVector3D *destinationPos;
-
-    QString textureImage;
 
     double strength;
 
@@ -142,13 +136,7 @@ public:
 
     Movers();
 
-    Movers(double transx,double transy,double transz,double rotx,double roty,double rotz,double strength,double opaqueDistance);
-
-    void setTranslateAll(double transX,double transY,double transZ);
-
-    void setRotateAll(double rotX,double rotY,double rotZ);
-
-
+    Movers(double transx, double transy, double transz, double rotx, double roty, double rotz, double strength, double opaqueDistance, QVector3D *dest);
 
     double getStrength() const;
     void setStrength(double value);
@@ -160,12 +148,6 @@ public:
     void setDestinationPos(QVector3D *value);
     QVector3D getVelocity() const;
     void setVelocity(const QVector3D &value);
-    QVector3D getTranslate() const;
-    void setTranslate(const QVector3D &value);
-    QVector3D getRotate() const;
-    void setRotate(const QVector3D &value);
-    QString getTextureImage() const;
-    void setTextureImage(const QString &value);
 };
 
 class World
@@ -182,6 +164,8 @@ public:
     void addHurdles(const Hurdles &hurdle);
     void addSources(const Movers &source);
 
+    QList<Movers> &getSourceList();
+    void setSourceList(const QList<Movers> &value);
 };
 
 #endif // MODELS

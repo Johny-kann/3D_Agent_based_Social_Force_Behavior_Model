@@ -106,11 +106,14 @@ void TextureMappingWindow::render()
 
      initializeCamera();
 
-
-
     for(int i=0 ; i<world->getHurdlesList().size();i++)
     {
         renderObject(world->getHurdlesList().operator [](i));
+    }
+
+    for(int i=0 ; i<world->getSourceList().size();i++)
+    {
+        renderObject(world->getSourceList().operator [](i));
     }
 
     m_program->release();
@@ -283,6 +286,14 @@ void TextureMappingWindow::loadGLTextureMap()
     {
      //   world->getHurdlesList().at(i).getTextureImage()
         loadGLTexture(world->getHurdlesList().operator [](i).getTextureImage(),world->getHurdlesList().operator [](i).getTexture());
+
+    }
+
+    for(int i=0;i<world->getSourceList().size();i++)
+    {
+     //   world->getHurdlesList().at(i).getTextureImage()
+        loadGLTexture(world->getSourceList().operator [](i).getTextureImage(),world->getSourceList().operator [](i).getTexture());
+
     }
 }
 

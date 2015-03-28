@@ -94,13 +94,19 @@ int main(int argc, char *argv[])
     window.show();
     window.setAnimating(true);
 
-    Hurdles hh;
+
+    controller.showScreen();
+
+  //  Hurdles hh;
      Hurdles hh2;
      hh2.setTranslate(1.0,0.0,-3.0);
 
-    controller.getWorld().addHurdles(hh);
+     Movers mm;
+
+
+  //  controller.getWorld().addHurdles(hh);
     controller.getWorld().addHurdles(hh2);
-    controller.showScreen();
+    controller.getWorld().addSources(mm);
 
   //  CubePoints cube1;
 
@@ -110,16 +116,8 @@ int main(int argc, char *argv[])
   //  dd.show();
   //  qDebug()<<Formula::randomNumber(50);
 
-    World w;
 
-    Hurdles h1;
-    Hurdles h2;
-
-    w.addHurdles(h1);
-    w.addHurdles(h2);
-
-
-    w.getHurdlesList().operator [](0).setTranslate(1.1,1.1,1.1);
+  //  w.getHurdlesList().operator [](0).setTranslate(1.1,1.1,1.1);
 
   //  qDebug()<<w.getHurdlesList().operator [](0).getTrans
     return app.exec();
