@@ -12,7 +12,13 @@ class MainController
 public:
   //  Camera camera;
     World world;
-
+    int cameraSourceNumber;
+    bool cameraCenter;
+public:
+    enum cameraActions
+    {
+        nextSource,previousSource,centerLocation
+    };
 public:
     MainController();
     ~MainController();
@@ -20,10 +26,13 @@ public:
 
     void showScreen();
     void calculateVelocity();
+    void changeCamera(cameraActions value);
 
     World &getWorld();
     void setWorld(const World &value);
     void moveSourcesOn(bool value);
+
+
 };
 
 #endif // CONTROLLERS

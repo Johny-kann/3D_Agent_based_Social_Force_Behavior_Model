@@ -97,10 +97,10 @@ void TextureMappingWindow::render()
 //   vMatrix.rotate(lightv, 0.0, 1.0, 0.0);
    m_modelView.setToIdentity();
 
-   m_modelView.translate(0.0f, 0.0f, m_z);
+ /*  m_modelView.translate(0.0f, 0.0f, m_z);
    m_modelView.rotate(m_xrot, 1.0, 0.0, 0.0);
    m_modelView.rotate(m_yrot, 0.0, 1.0, 0.0);
-
+*/
 //   m_modelView.rotate(lightv, 0.0, 1.0, 0.0);
 
    m_program->setUniformValue("mvMatrix",m_vMatrix * m_modelView);
@@ -129,7 +129,7 @@ void TextureMappingWindow::renderObject(Objects obj)
     m_modelView.setToIdentity();
   //  m_modelView.translate(3.0f, 0.0f, -5.0f);
 
-    m_modelView.translate(obj.getTranslate());
+     m_modelView.translate(obj.getTranslate());
 
     m_modelView.rotate(obj.getRotate().x(), 1.0, 0.0, 0.0);
     m_modelView.rotate(obj.getRotate().y(), 0.0, 1.0, 0.0);
@@ -180,11 +180,23 @@ void TextureMappingWindow::keyPressEvent(QKeyEvent *event)
             }
             break;
         }
-        case Qt::Key_PageUp:
+        case Qt::Key_BracketLeft:
         {
-            m_z-=0.2f;
+            controller->changeCamera(controller->previousSource);
             break;
         }
+    case Qt::Key_BracketRight:
+        {
+        controller->changeCamera(controller->nextSource);
+        break;
+        }
+
+    case Qt::Key_C:
+        {
+        controller->changeCamera(controller->centerLocation);
+        break;
+        }
+
         case Qt::Key_PageDown:
         {
             m_z+=0.2f;

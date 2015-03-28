@@ -37,6 +37,7 @@ void LogicClass::addHurdlesToWorld(World &world, int numberOfObjects, double opa
 
  //   addHurdlePosRandom(world,30);
     addFixedPoints(world,numberOfObjects);
+
 }
 
 void LogicClass::addHurdlePosRandom(World &world, int max)
@@ -51,13 +52,14 @@ void LogicClass::addHurdlePosRandom(World &world, int max)
 
 void LogicClass::addFixedPoints(World &world, int numberOfObjects)
 {
-    double HURDLE_POINTS[][2] = {{3.0,3.0},{14.0,10.0},{5.0,10.0},{10.0,8.0},{15.0,46.0},{3.0,20.0},{18.0,10.0},
-                             {20.0,13.0},{10.0,30.0},{35.0,50.0},{22.0,12.0},{2.0,45.0},{44.0,45.0},{25.0,44.0},
-                             {9.0,45.0},{32.0,10.0},{5.0,18.0},{9.0,34.0},{13.0,23.0},{43.0,25.0},{0.0,25.0}};
+    double HURDLE_POINTS[][2] = {{3.0,3.0},{6.0,2.0},{10.0,7.0},{25.0,6.0},{32.0,20.0},{23.0,20.0},{14.0,15.0},
+                             {5.0,23.0},{15.0,30.0},{23.0,29.0},{28.0,31.0},{32.0,34.0},{38.0,39.0},{48.0,44.0},
+                             {2.0,45.0},{12.0,48.0},{17.0,45.0},{25.0,46.0},{32.0,48.0},{39.0,47.0},{45,45.0}};
     for(int i=0;i<world.getHurdlesList().size();i++)
     {
         world.getHurdlesList().operator [](i).setTranslate(HURDLE_POINTS[i][0],0,HURDLE_POINTS[i][1]);
     }
+
 }
 
 void LogicClass::calculateVelocity(World *world, Movers *movers)
@@ -163,4 +165,9 @@ void LogicClass::reverseRepel(QVector3D &repelVector)
     double z = repelVector.z();
     repelVector.setZ(x);
     repelVector.setX(z);
+}
+
+void LogicClass::attachCamera(World *world, int number)
+{
+    world->getCamera().setTranslate(world->getSourceList().operator [](number).getCameraTransPos());
 }

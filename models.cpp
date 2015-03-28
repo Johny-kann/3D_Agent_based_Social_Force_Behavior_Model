@@ -422,6 +422,17 @@ void World::setCamera(const Camera &value)
 {
     camera = value;
 }
+
+
+QVector3D &World::getCenterLocation()
+{
+    return centerLocation;
+}
+
+void World::setCenterLocation(const QVector3D &value)
+{
+    centerLocation = value;
+}
 QList<Hurdles> &World::getHurdlesList()
 {
     return hurdlesList;

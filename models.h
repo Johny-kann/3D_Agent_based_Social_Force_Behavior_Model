@@ -173,6 +173,7 @@ private:
     QList<Hurdles> hurdlesList;
     QList<Movers> sourceList;
     Camera camera;
+    QVector3D centerLocation;
 
 public:
     QList<Hurdles> &getHurdlesList();
@@ -185,7 +186,10 @@ public:
     void setSourceList(const QList<Movers> &value);
     Camera &getCamera();
     void setCamera(const Camera &value);
+    QVector3D &getCenterLocation();
+    void setCenterLocation(const QVector3D &value);
 };
 
 #endif // MODELS
+
 
