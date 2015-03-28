@@ -87,10 +87,14 @@ CubePoints::CubePoints()
 
 }
 
-const int constants::NO_OF_OBJECTS = 20;
+const int constants::NO_OF_OBJECTS = 21;
 const double constants::SIGMA = 4;
 const double constants::HURDLE_STRENGTH = 2;
 const double constants::HURDLE_OPAQUE_DISTANCE = 1;
 const QString constants::HURDLE_IMAGE = ":/image/Crate.bmp";
 const QString constants::SOURCE_IMAGE = ":/image/NeHe.bmp";
 const double constants::DEST_FORCE = 0.6;
+//double **constants::HURDLE_POINTS = {{3.0,3.0},{14.0,10.0},{5.0,10.0},{10.0,8.0},{25.0,16.0},{3.0,20.0},{18.0,10.0},
+//                                   {22.0,13.0},{40.0,30.0},{35.0,50.0},{42.0,12.0},{12.0,45.0},{44.0,45.0},{35.0,44.0},
+//                                   {29.0,45.0},{32.0,10.0},{5.0,38.0},{9.0,34.0},{13.0,43.0},{43.0,25.0},{0.0,25.0}};
+

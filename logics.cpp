@@ -35,7 +35,8 @@ void LogicClass::addHurdlesToWorld(World &world, int numberOfObjects, double opa
 
     }
 
-    addHurdlePosRandom(world,30);
+ //   addHurdlePosRandom(world,30);
+    addFixedPoints(world,numberOfObjects);
 }
 
 void LogicClass::addHurdlePosRandom(World &world, int max)
@@ -45,6 +46,17 @@ void LogicClass::addHurdlePosRandom(World &world, int max)
    //     new Hurdles().setTranslate(Formula::randomNumber(max),0.0,Formula::randomNumber(max));
 
         world.getHurdlesList().operator [](i).setTranslate(Formula::randomNumber(max,i),0.0,Formula::randomNumber(max,-i));
+    }
+}
+
+void LogicClass::addFixedPoints(World &world, int numberOfObjects)
+{
+    double HURDLE_POINTS[][2] = {{3.0,3.0},{14.0,10.0},{5.0,10.0},{10.0,8.0},{15.0,46.0},{3.0,20.0},{18.0,10.0},
+                             {20.0,13.0},{10.0,30.0},{35.0,50.0},{22.0,12.0},{2.0,45.0},{44.0,45.0},{25.0,44.0},
+                             {9.0,45.0},{32.0,10.0},{5.0,18.0},{9.0,34.0},{13.0,23.0},{43.0,25.0},{0.0,25.0}};
+    for(int i=0;i<world.getHurdlesList().size();i++)
+    {
+        world.getHurdlesList().operator [](i).setTranslate(HURDLE_POINTS[i][0],0,HURDLE_POINTS[i][1]);
     }
 }
 

@@ -15,6 +15,7 @@ struct VertexData
 };
 
 
+
 class CubePoints
 {
 private:
@@ -48,6 +49,8 @@ public:
     static const QString HURDLE_IMAGE ;
     static const QString SOURCE_IMAGE;
     static const double DEST_FORCE;
+//    static double **HURDLE_POINTS;
+
 
 };
 
