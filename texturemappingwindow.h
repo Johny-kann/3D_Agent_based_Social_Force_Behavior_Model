@@ -33,7 +33,9 @@ protected:
     QTimer *timer;
 
 private:
-    void loadGLTexture(QString imageLoc);
+    void loadGLTexture(QString imageLoc, GLuint *m_texture);
+
+    void loadGLTextureMap();
 
     void loadShader();
 private:

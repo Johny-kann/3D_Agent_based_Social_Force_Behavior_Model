@@ -45,6 +45,7 @@ public:
     static const double HURDLE_STRENGTH;
     static const double HURDLE_OPAQUE_DISTANCE;
     static const QString HURDLE_IMAGE ;
+    static const QString SOURCE_IMAGE;
 
 };
 

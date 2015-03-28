@@ -293,6 +293,7 @@ Hurdles::Hurdles()
 
     this->setStrength(0.0);
     this->setOpaqueDistance(0.0);
+    this->setTextureImage(constants::SOURCE_IMAGE);
 }
 
 Hurdles::Hurdles(double transx, double transy, double transz, double rotx, double roty, double rotz, double strength, double opaqueDistance)
@@ -303,6 +304,9 @@ Hurdles::Hurdles(double transx, double transy, double transz, double rotx, doubl
     this->setRotate(rotx,roty,rotz);
     this->setStrength(strength);
     this->setOpaqueDistance(opaqueDistance);
+
+    this->setTextureImage(constants::SOURCE_IMAGE);
+
 }
 
 /*void Hurdles::setTranslate(double transX, double transY, double transZ)
@@ -405,7 +409,9 @@ void Objects::setTextureImage(const QString &value)
 
 void Objects::setTexture(GLuint *texture)
 {
-    this->m_texture = texture;
+    this->m_texture[0] = texture[0];
+    this->m_texture[1] = texture[1];
+    this->m_texture[1] = texture[1];
 }
 
 GLuint *Objects::getTexture()

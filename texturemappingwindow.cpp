@@ -60,7 +60,8 @@ void TextureMappingWindow::initialize()
     qDebug()<<"Initialize";
     initGeometry();
     loadShader();
-    loadGLTexture(world->getHurdlesList().operator [](0).getTextureImage());
+//    loadGLTexture(world->getHurdlesList().operator [](0).getTextureImage());
+    loadGLTextureMap();
     glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
     glClearDepthf(1.0);
     glEnable(GL_TEXTURE_2D);
@@ -148,7 +149,9 @@ void TextureMappingWindow::renderObject(Objects obj)
     m_program->enableAttributeArray(m_texCoordAttr);
     glVertexAttribPointer(m_texCoordAttr, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData), (const void *)offset);
 
-    glBindTexture(GL_TEXTURE_2D, m_texture[m_filter]);
+    glBindTexture(GL_TEXTURE_2D,
+    //              m_texture[m_filter],
+                  obj.getTexture()[m_filter]);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vboIds[1]);
     glDrawElements(GL_TRIANGLE_STRIP, 34, GL_UNSIGNED_SHORT, 0);
 
@@ -245,7 +248,7 @@ void TextureMappingWindow::keyPressEvent(QKeyEvent *event)
     OpenGLWindow::keyPressEvent(event);
 }
 
-void TextureMappingWindow::loadGLTexture(QString imageLoc)
+void TextureMappingWindow::loadGLTexture(QString imageLoc,GLuint *m_texture)
 {
     QImage image(imageLoc);
     image = image.convertToFormat(QImage::Format_RGB888);
@@ -272,6 +275,15 @@ void TextureMappingWindow::loadGLTexture(QString imageLoc)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 
     glGenerateMipmap(GL_TEXTURE_2D);
+}
+
+void TextureMappingWindow::loadGLTextureMap()
+{
+    for(int i=0;i<world->getHurdlesList().size();i++)
+    {
+     //   world->getHurdlesList().at(i).getTextureImage()
+        loadGLTexture(world->getHurdlesList().operator [](i).getTextureImage(),world->getHurdlesList().operator [](i).getTexture());
+    }
 }
 
 void TextureMappingWindow::loadShader()
