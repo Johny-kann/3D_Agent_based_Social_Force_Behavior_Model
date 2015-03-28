@@ -7,6 +7,7 @@
 #include <QTimer>
 #include <QtWidgets>
 #include "models.h"
+#include "controllers.h"
 
 #ifndef GLCONTAINER_H
 #define GLCONTAINER_H
@@ -21,6 +22,9 @@ public:
     void setAnimating(bool animating);
     QTimer *timer;
 
+    MainController *getController() const;
+    void setController(MainController *value);
+
 public slots:
 
     void renderNow();
@@ -33,6 +37,7 @@ public slots:
 protected:
   //  bool event(QEvent *event);
     Camera *camera;
+    MainController *controller;
 
     void initializeGL();
 

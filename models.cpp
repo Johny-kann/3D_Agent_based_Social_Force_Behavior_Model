@@ -197,6 +197,11 @@ void Movers::setVelocity(const QVector3D &value)
     velocity = value;
 }
 
+void Movers::moveNextStep()
+{
+    this->translate.operator +=(this->velocity);
+}
+
 
 Movers::Movers()
 {

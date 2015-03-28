@@ -148,6 +148,8 @@ public:
     void setDestinationPos(QVector3D *value);
     QVector3D getVelocity() const;
     void setVelocity(const QVector3D &value);
+
+    void moveNextStep();
 };
 
 class World

@@ -1,6 +1,6 @@
 #include "models.h"
 #include <QSurfaceFormat>
-#include "texturemappingwindow.h"
+#include "openglwindow.h"
 #include <QOpenGLFunctions>
 
 
@@ -19,6 +19,7 @@ public:
     void initializeWorld();
 
     void showScreen();
+    void calculateVelocity();
 
     World &getWorld();
     void setWorld(const World &value);

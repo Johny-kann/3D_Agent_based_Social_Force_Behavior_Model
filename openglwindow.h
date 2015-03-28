@@ -11,6 +11,7 @@
 #include "models.h"
 #include <QTimer>
 #include "datapoints.h"
+#include "controllers.h"
 
 class OpenGLWindow : public QWindow, protected QOpenGLFunctions
 {
@@ -23,15 +24,19 @@ public:
 
     QTimer *timer;
 
+    MainController *getController() const;
+    void setController(MainController *value);
+
 public slots:
     void renderLater();
 
     void renderNow();
 
-     void timeout();
+    void timeout();
 
 protected:
      Camera *camera;
+     MainController *controller;
 
     bool event(QEvent *event);
 

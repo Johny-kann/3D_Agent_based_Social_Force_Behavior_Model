@@ -122,6 +122,16 @@ void GLContainer::timeout()
 
     update();
 }
+MainController *GLContainer::getController() const
+{
+    return controller;
+}
+
+void GLContainer::setController(MainController *value)
+{
+    controller = value;
+}
+
 
 /*
 bool GLContainer::event(QEvent *event)

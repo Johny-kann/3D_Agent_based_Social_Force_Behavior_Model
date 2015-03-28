@@ -38,8 +38,16 @@ void MainController::initializeWorld()
 
 }
 
+
+
 void MainController::showScreen()
 {
 
+
+}
+
+void MainController::calculateVelocity()
+{
+    LogicClass::calculateVelocity(&this->world);
 
 }

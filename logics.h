@@ -15,6 +15,8 @@ class LogicClass
   public:
     static void addHurdlesToWorld(World &world, int numberOfObjects, double opaqueDistance, double strength, QString str);
     static void addHurdlePosRandom(World &world,int max);
+    static void calculateVelocity(World *world, Movers *movers);
+    static void calculateVelocity(World *world);
 };
 
 #endif // LOGICS

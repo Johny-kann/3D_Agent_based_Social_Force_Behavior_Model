@@ -89,37 +89,31 @@ int main(int argc, char *argv[])
     format.setSamples(16);
 
     TextureMappingWindow window;
+    window.setController(&controller);
     window.setWorld(&controller.getWorld());
     window.setFormat(format);
     window.show();
     window.setAnimating(true);
 
 
-    controller.showScreen();
+//    controller.showScreen();
 
   //  Hurdles hh;
      Hurdles hh2;
      hh2.setTranslate(1.0,0.0,-3.0);
 
      Movers mm;
-
+    mm.setSpeed(.5);
+    mm.setDestinationPos(new QVector3D(50,0,50));
 
   //  controller.getWorld().addHurdles(hh);
     controller.getWorld().addHurdles(hh2);
     controller.getWorld().addSources(mm);
 
-  //  CubePoints cube1;
+ //   controller.calculateVelocity();
 
-  //  LogicalClass::addHurdles(*(new World()),3,3,3,"fdjkfjds");
+  //  qDebug()<<controller.getWorld().getSourceList().operator[](0).getTranslate();
 
-  //  Dummy dd;
-  //  dd.show();
-  //  qDebug()<<Formula::randomNumber(50);
-
-
-  //  w.getHurdlesList().operator [](0).setTranslate(1.1,1.1,1.1);
-
-  //  qDebug()<<w.getHurdlesList().operator [](0).getTrans
     return app.exec();
   //  return 0;
 }

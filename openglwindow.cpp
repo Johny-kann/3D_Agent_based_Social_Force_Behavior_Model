@@ -147,16 +147,27 @@ void OpenGLWindow::renderNow()
 
 void OpenGLWindow::timeout()
 {
+    this->controller->calculateVelocity();
     renderLater();
 }
+MainController *OpenGLWindow::getController() const
+{
+    return controller;
+}
+
+void OpenGLWindow::setController(MainController *value)
+{
+    controller = value;
+}
+
 
 bool OpenGLWindow::event(QEvent *event)
 {
     switch (event->type())
     {
-        case QEvent::UpdateRequest:
-            m_update_pending = false;
-            renderNow();
+    case QEvent::UpdateRequest:
+        m_update_pending = false;
+        renderNow();
             return true;
         default:
             return QWindow::event(event);
