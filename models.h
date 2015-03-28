@@ -8,7 +8,7 @@ class Camera
 {
 private:
 
-    QVector3D translate;
+    QVector3D *translate;
 
     QVector3D rotate;
 
@@ -48,11 +48,15 @@ public:
 
     void addDistance(double distance);
 
+    QVector3D *getTranslate() const;
+    void setTranslate(QVector3D *value);
 };
 
 class Objects
 {
 protected:
+    QVector3D *cameraTransPos;
+
     QVector3D translate;
 
     QVector3D rotate;
@@ -66,6 +70,7 @@ public:
     Objects(double transX,double transY,double transZ,double rotX,double rotY,double rotZ);
     void setTranslate(double transX,double transY,double transZ);
     void setRotate(double rotX,double rotY,double rotZ);
+    void syncTransHeads();
 
     QVector3D getTranslate();
     void setTranslate(const QVector3D &value);
@@ -76,6 +81,8 @@ public:
 
     void setTexture(GLuint *texture);
     GLuint *getTexture();
+    QVector3D *getCameraTransPos() const;
+    void setCameraTransPos(QVector3D *value);
 };
 
 class Hurdles : public Objects
@@ -150,6 +157,8 @@ public:
     QVector3D getVelocity() const;
     void setVelocity(const QVector3D &value);
 
+    QVector3D &getTranslatePointer();
+
     void moveNextStep();
 
     void startMoving();
@@ -174,6 +183,8 @@ public:
 
     QList<Movers> &getSourceList();
     void setSourceList(const QList<Movers> &value);
+    Camera &getCamera();
+    void setCamera(const Camera &value);
 };
 
 #endif // MODELS

@@ -1,10 +1,21 @@
 #include "models.h"
 
+
+QVector3D *Camera::getTranslate() const
+{
+    return translate;
+}
+
+void Camera::setTranslate(QVector3D *value)
+{
+    translate = value;
+}
 Camera::Camera(double translateX, double translateY, double translateZ, double rotateX, double rotateY, double rotateZ,double distance)
 {
-    translate.setX(translateX);
-    translate.setY(translateY);
-    translate.setZ(translateZ);
+    translate = new QVector3D(translateX,translateY,translateZ);
+ //   translate->setX(translateX);
+ //   translate->setY(translateY);
+ //   translate->setZ(translateZ);
 
     rotate.setX(rotateX);
     rotate.setY(rotateY);
@@ -16,9 +27,12 @@ Camera::Camera(double translateX, double translateY, double translateZ, double r
 
 Camera::Camera()
 {
-    translate.setX(0.0);
-    translate.setY(0.0);
-    translate.setZ(0.0);
+    translate = new QVector3D(0.0,0.0,0.0);
+ //   translate->setX(0.0);
+
+  //  translate->setY(0.0);
+
+  //  translate->setZ(0.0);
 
     rotate.setX(0.0);
     rotate.setY(0.0);
@@ -34,35 +48,35 @@ Camera::~Camera()
 
 void Camera::setTranslateX(double x){
 
-   translate.setX(x);
+   translate->setX(x);
 
 }
 
 void Camera::setTranslateY(double y){
 
-    translate.setY(y);
+    translate->setY(y);
 }
 
 void Camera::setTranslateZ(double z){
 
-    translate.setZ(z);
+    translate->setZ(z);
 }
 
 void Camera::addTranslateX(double x)
 {
-    translate.setX(translate.x()+x);
+    translate->setX(translate->x()+x);
  //   translateX+=x;
 }
 
 void Camera::addTranslateY(double y)
 {
-    translate.setY(translate.y()+y);
+    translate->setY(translate->y()+y);
    // translateY+=y;
 }
 
 void Camera::addTranslateZ(double z)
 {
-    translate.setZ(translate.z()+z);
+    translate->setZ(translate->z()+z);
     //translateZ+=z;
 }
 
@@ -99,18 +113,18 @@ void Camera::addRotateZ(double z)
 
 double Camera::getTranslateX()
 {
-    return translate.x();
+    return translate->x();
 }
 
 
 double Camera::getTranslateY()
 {
-    return translate.y();
+    return translate->y();
 }
 
 double Camera::getTranslateZ()
 {
-    return translate.z();
+    return translate->z();
 }
 
 double Camera::getRotateX()
@@ -195,6 +209,11 @@ QVector3D Movers::getVelocity() const
 void Movers::setVelocity(const QVector3D &value)
 {
     velocity = value;
+}
+
+QVector3D &Movers::getTranslatePointer()
+{
+    return this->translate;
 }
 
 void Movers::moveNextStep()
@@ -383,7 +402,18 @@ void World::setSourceList(const QList<Movers> &value)
     sourceList = value;
 }
 
-Camera &World::getCamera() const
+/*Camera &World::getCamera() const
+{
+    return camera;
+}
+
+void World::setCamera(const Camera &value)
+{
+    camera = value;
+}
+*/
+
+Camera &World::getCamera()
 {
     return camera;
 }
@@ -447,16 +477,30 @@ GLuint *Objects::getTexture()
 {
     return this->m_texture;
 }
+
+QVector3D *Objects::getCameraTransPos() const
+{
+    return cameraTransPos;
+}
+
+void Objects::setCameraTransPos(QVector3D *value)
+{
+    cameraTransPos = value;
+}
 Objects::Objects()
 {
     this->setTranslate(0.0,0.0,0.0);
     this->setRotate(0.0,0.0,0.0);
+    this->cameraTransPos = new QVector3D(0.0,0.0,0.0);
+    this->syncTransHeads();
 }
 
 Objects::Objects(double transX, double transY, double transZ, double rotX, double rotY, double rotZ)
 {
     this->setTranslate(transX,transY,transZ);
     this->setRotate(rotX,rotY,rotZ);
+    this->cameraTransPos = new QVector3D(0.0,0.0,0.0);
+    this->syncTransHeads();
 
 }
 
@@ -472,6 +516,13 @@ void Objects::setRotate(double rotX, double rotY, double rotZ)
     this->rotate.setX(rotX);
     this->rotate.setY(rotY);
     this->rotate.setZ(rotZ);
+}
+
+void Objects::syncTransHeads()
+{
+    this->cameraTransPos->setX(this->translate.x());
+    this->cameraTransPos->setY(this->translate.y());
+    this->cameraTransPos->setZ(this->translate.z());
 }
 
 QVector3D Objects::getTranslate()

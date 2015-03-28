@@ -79,6 +79,8 @@ void LogicClass::calculateVelocity(World *world)
         addForces(world,mov);
          mov->moveNextStep();
 
+         mov->syncTransHeads();
+
         }
 
     }
