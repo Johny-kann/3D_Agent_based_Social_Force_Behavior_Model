@@ -239,7 +239,7 @@ void OpenGLWindow::initializeCamera()
   //  m_vMatrix.translate(camera->getTranslateX(),camera->getTranslateY(),camera->getTranslateZ());
     QVector3D *temp = camera->getTranslate();
     temp->setX(-temp->x());
-  //  temp->setY(-temp->y());
+    temp->setY(-temp->y());
     temp->setZ(-temp->z());
     m_vMatrix.translate(
                 *temp

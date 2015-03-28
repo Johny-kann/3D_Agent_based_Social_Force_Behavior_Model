@@ -87,7 +87,7 @@ CubePoints::CubePoints()
 
 }
 
-const int constants::NO_OF_OBJECTS = 10;
+const int constants::NO_OF_OBJECTS = 20;
 const double constants::SIGMA = 4;
 const double constants::HURDLE_STRENGTH = 2;
 const double constants::HURDLE_OPAQUE_DISTANCE = 1;

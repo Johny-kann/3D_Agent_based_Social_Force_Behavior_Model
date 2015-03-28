@@ -103,9 +103,13 @@ int main(int argc, char *argv[])
      hh2.setTranslate(1.0,0.0,-3.0);
 
      Movers mm;
-    mm.setSpeed(.2);
+      Movers mm2;
+    mm.setSpeed(.5);
+    mm2.setSpeed(0.5);
     mm.setTranslate(0.0,0.0,0.0);
+    mm2.setTranslate(50.0,0.0,50.0);
     mm.setDestinationPos(new QVector3D(50,0,50));
+    mm2.setDestinationPos(new QVector3D(0,0,0));
 
     Camera cc;
     Movers m2;
@@ -124,6 +128,7 @@ int main(int argc, char *argv[])
      qDebug()<<*(controller.getWorld().getCamera().getTranslate());
 
     controller.getWorld().addSources(mm);
+    controller.getWorld().addSources(mm2);
 
 
  //   controller.calculateVelocity();

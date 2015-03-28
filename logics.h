@@ -21,6 +21,7 @@ class LogicClass
     static void stopSources(World *world);
     static void addForces(World *world,Movers *movers);
     static void calculateIntermediateForce(Movers *movers,Hurdles *hurdle);
+    static void reverseRepel(QVector3D &repelVector);
 };
 
 #endif // LOGICS
