@@ -79,10 +79,11 @@ int main(int argc, char *argv[])
       QGuiApplication app(argc, argv);
 
 
-  //  Camera *camera = new Camera(
-  //              0.0,0.0,0.0,0.0,0.0,0.0,5.5);
+    Camera *camera = new Camera(
+                0.0,0.0,0.0,0.0,0.0,0.0,5.5);
 
     MainController controller;
+    controller.getWorld().setCamera(*camera);
     controller.initializeWorld();
 
     QSurfaceFormat format;

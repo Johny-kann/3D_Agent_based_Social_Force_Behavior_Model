@@ -8,7 +8,7 @@ class Camera
 {
 private:
 
-    QVector3D translate;
+    QVector3D *translate;
 
     QVector3D rotate;
 
@@ -174,6 +174,8 @@ public:
 
     QList<Movers> &getSourceList();
     void setSourceList(const QList<Movers> &value);
+    Camera &getCamera();
+    void setCamera(const Camera &value);
 };
 
 #endif // MODELS
