@@ -16,6 +16,22 @@ double Formula::randomNumber(int max,int seed)
 }
 
 
+void LogicClass::trigger(Movers *obj)
+{
+    QVector3D vel1(obj->getTranslate());
+
+    QVector3D vel2((*obj->getDestinationPos()));
+
+    QVector3D difference((vel2-vel1));
+
+    difference.operator +=(QVector3D(1,0,-1));
+    difference.normalize();
+
+    obj->setVelocity(-obj->getSpeed()/20*(
+                            difference
+                            ));
+}
+
 void LogicClass::addHurdlesToWorld(World &world, int numberOfObjects, double opaqueDistance, double strength, QString str)
 {
     for(int i=0; i<numberOfObjects; i++)
@@ -94,6 +110,11 @@ void LogicClass::calculateVelocity(World *world)
         addForces(world,mov);
         addForcesSource(world,mov,i);
 
+        if(mov->getVelocity().length()<0.001)
+        {
+            qDebug()<<"Triggere";
+            trigger(mov);
+        }
          mov->moveNextStep();
 
     //     mov->syncTransHeads();

@@ -12,6 +12,8 @@ public:
 
 class LogicClass
 {
+protected:
+    static void trigger(Movers *obj);
   public:
     static void addHurdlesToWorld(World &world, int numberOfObjects, double opaqueDistance, double strength, QString str);
     static void addHurdlePosRandom(World &world,int max);
