@@ -2,9 +2,9 @@
 
 Camera::Camera(double translateX, double translateY, double translateZ, double rotateX, double rotateY, double rotateZ,double distance)
 {
-    translate->setX(translateX);
-    translate->setY(translateY);
-    translate->setZ(translateZ);
+    translate.setX(translateX);
+    translate.setY(translateY);
+    translate.setZ(translateZ);
 
     rotate.setX(rotateX);
     rotate.setY(rotateY);
@@ -16,9 +16,9 @@ Camera::Camera(double translateX, double translateY, double translateZ, double r
 
 Camera::Camera()
 {
-    translate->setX(0.0);
-    translate->setY(0.0);
-    translate->setZ(0.0);
+    translate.setX(0.0);
+    translate.setY(0.0);
+    translate.setZ(0.0);
 
     rotate.setX(0.0);
     rotate.setY(0.0);
@@ -34,44 +34,41 @@ Camera::~Camera()
 
 void Camera::setTranslateX(double x){
 
-
-   this->translate->setX(x);
+   translate.setX(x);
 
 }
 
 void Camera::setTranslateY(double y){
 
-    this->translate->setY(y);
+    translate.setY(y);
 }
 
 void Camera::setTranslateZ(double z){
 
-    this->translate->setZ(z);
+    translate.setZ(z);
 }
 
 void Camera::addTranslateX(double x)
 {
-    this->translate->setX(this->translate->x()+x);
+    translate.setX(translate.x()+x);
  //   translateX+=x;
 }
 
 void Camera::addTranslateY(double y)
 {
-    this->translate->setY(this->translate->y()+y);
+    translate.setY(translate.y()+y);
    // translateY+=y;
 }
 
 void Camera::addTranslateZ(double z)
 {
-    this->translate->setZ(this->translate->z()+z);
-
+    translate.setZ(translate.z()+z);
     //translateZ+=z;
 }
 
 
 void Camera::setRotateX(double x)
 {
-
     rotate.setX(x);
 }
 
@@ -102,18 +99,18 @@ void Camera::addRotateZ(double z)
 
 double Camera::getTranslateX()
 {
-    return this->translate->x();
+    return translate.x();
 }
 
 
 double Camera::getTranslateY()
 {
-    return this->translate->y();
+    return translate.y();
 }
 
 double Camera::getTranslateZ()
 {
-    return this->translate->z();
+    return translate.z();
 }
 
 double Camera::getRotateX()
@@ -386,7 +383,7 @@ void World::setSourceList(const QList<Movers> &value)
     sourceList = value;
 }
 
-Camera &World::getCamera()
+Camera &World::getCamera() const
 {
     return camera;
 }

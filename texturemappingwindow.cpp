@@ -33,7 +33,6 @@ World *TextureMappingWindow::getWorld() const
 void TextureMappingWindow::setWorld(World *value)
 {
     world = value;
-    camera = &value->getCamera();
 }
 TextureMappingWindow::TextureMappingWindow(QWindow *parent) :
     OpenGLWindow(parent), m_xrot(0.0f), m_yrot(0.0f), m_xspeed(0.0f),
