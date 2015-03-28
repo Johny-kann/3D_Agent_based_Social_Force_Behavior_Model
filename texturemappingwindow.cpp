@@ -215,16 +215,14 @@ void TextureMappingWindow::keyPressEvent(QKeyEvent *event)
         qDebug()<<alpha;
         break;
     }
-    case Qt::Key_N:
+    case Qt::Key_S:
     {
-        distance+=0.5f;
-        qDebug()<<distance;
+        controller->moveSourcesOn(true);;
         break;
     }
-    case Qt::Key_C:
+    case Qt::Key_D:
     {
-        distance-=0.5f;
-        qDebug()<<distance;
+        controller->moveSourcesOn(false);
         break;
     }
         case Qt::Key_Up:

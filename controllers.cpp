@@ -20,6 +20,14 @@ void MainController::setWorld(const World &value)
 {
     world = value;
 }
+
+void MainController::moveSourcesOn(bool value)
+{
+    if(value)
+        LogicClass::moveSources(&world);
+    else
+        LogicClass::stopSources(&world);
+}
 MainController::MainController()
 {
     //   camera( 0.0,0.0,0.0,0.0,0.0,0.0,5.5);

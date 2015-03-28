@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
      hh2.setTranslate(1.0,0.0,-3.0);
 
      Movers mm;
-    mm.setSpeed(.5);
+    mm.setSpeed(.2);
     mm.setDestinationPos(new QVector3D(50,0,50));
 
   //  controller.getWorld().addHurdles(hh);

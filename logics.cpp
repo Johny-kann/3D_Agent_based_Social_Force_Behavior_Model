@@ -50,28 +50,19 @@ void LogicClass::addHurdlePosRandom(World &world, int max)
 
 void LogicClass::calculateVelocity(World *world, Movers *movers)
 {
-  //  movers->getDestinationPos()-movers->getTranslate();
-  //  qDebug()<<"Here1";
+
     QVector3D vel1(movers->getTranslate());
 
     QVector3D vel2((*movers->getDestinationPos()));
-//qDebug()<<"Here2";
-   // difference.normalize();
-//qDebug()<<vel2;
-//qDebug()<<vel1;
+
     QVector3D difference((vel2-vel1));
- //   qDebug()<<difference;
+
     difference.normalize();
-//qDebug()<<difference;
+
     movers->setVelocity(movers->getSpeed()*(
                             difference
                             ));
 
-//    qDebug()<<movers->getTranslate();
- //   for(int i=0;i<world->getHurdlesList().size();i++)
- //   {
-
-    // }
 }
 
 void LogicClass::calculateVelocity(World *world)
@@ -79,8 +70,31 @@ void LogicClass::calculateVelocity(World *world)
   //  qDebug()<<"Insides calc";
     for(int i = 0;i<world->getSourceList().size();i++)
     {
-        calculateVelocity(world,&world->getSourceList().operator [](i));
-        world->getSourceList().operator [](i).moveNextStep();
-     //   qDebug()<<world->getSourceList().operator [](i).getTranslate();
+        Movers *mov = &world->getSourceList().operator [](i);
+        if(mov->getMovingState())
+        {
+        calculateVelocity(world,mov);
+        mov->moveNextStep();
+        }
+
+    }
+}
+
+void LogicClass::moveSources(World *world)
+{
+    for(int i=0;i<world->getSourceList().size();i++)
+    {
+        world->getSourceList().operator [](i).startMoving();
+    }
+}
+
+void LogicClass::stopSources(World *world)
+{
+    qDebug()<<"Stopped";
+    for(int i=0;i<world->getSourceList().size();i++)
+    {
+
+        world->getSourceList().operator [](i).stopMoving();
+
     }
 }

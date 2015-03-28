@@ -17,6 +17,8 @@ class LogicClass
     static void addHurdlePosRandom(World &world,int max);
     static void calculateVelocity(World *world, Movers *movers);
     static void calculateVelocity(World *world);
+    static void moveSources(World *world);
+    static void stopSources(World *world);
 };
 
 #endif // LOGICS

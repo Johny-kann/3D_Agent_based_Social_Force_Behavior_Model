@@ -202,6 +202,21 @@ void Movers::moveNextStep()
     this->translate.operator +=(this->velocity);
 }
 
+void Movers::startMoving()
+{
+    this->move = true;
+}
+
+void Movers::stopMoving()
+{
+    this->move = false;
+}
+
+bool Movers::getMovingState() const
+{
+    return this->move;
+}
+
 
 Movers::Movers()
 {
@@ -222,6 +237,7 @@ Movers::Movers()
     this->velocity.setX(0.0);
     this->velocity.setY(0.0);
     this->velocity.setZ(0.0);
+    this->stopMoving();
 }
 
 Movers::Movers(double transx, double transy, double transz, double rotx, double roty, double rotz, double strength, double opaqueDistance,
@@ -240,6 +256,7 @@ Movers::Movers(double transx, double transy, double transz, double rotx, double 
     this->velocity.setX(0.0);
     this->velocity.setY(0.0);
     this->velocity.setZ(0.0);
+    this->stopMoving();
 
 }
 

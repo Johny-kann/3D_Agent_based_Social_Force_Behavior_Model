@@ -131,6 +131,7 @@ private:
     double speed;
 
     double opaqueDistance;
+    bool move;
 
 public:
 
@@ -150,6 +151,10 @@ public:
     void setVelocity(const QVector3D &value);
 
     void moveNextStep();
+
+    void startMoving();
+    void stopMoving();
+    bool getMovingState() const;
 };
 
 class World

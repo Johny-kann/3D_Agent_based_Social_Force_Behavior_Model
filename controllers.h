@@ -23,6 +23,7 @@ public:
 
     World &getWorld();
     void setWorld(const World &value);
+    void moveSourcesOn(bool value);
 };
 
 #endif // CONTROLLERS
