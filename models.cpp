@@ -500,18 +500,20 @@ void Objects::setCameraTransPos(QVector3D *value)
 }
 Objects::Objects()
 {
+
+    this->cameraTransPos = new QVector3D(0.0,0.0,0.0);
     this->setTranslate(0.0,0.0,0.0);
     this->setRotate(0.0,0.0,0.0);
-    this->cameraTransPos = new QVector3D(0.0,0.0,0.0);
-    this->syncTransHeads();
+
 }
 
 Objects::Objects(double transX, double transY, double transZ, double rotX, double rotY, double rotZ)
 {
+
+    this->cameraTransPos = new QVector3D(0.0,0.0,0.0);
     this->setTranslate(transX,transY,transZ);
     this->setRotate(rotX,rotY,rotZ);
-    this->cameraTransPos = new QVector3D(0.0,0.0,0.0);
-    this->syncTransHeads();
+
 
 }
 
@@ -520,6 +522,7 @@ void Objects::setTranslate(double transX, double transY, double transZ)
     this->translate.setX(transX);
     this->translate.setY(transY);
     this->translate.setZ(transZ);
+    this->syncTransHeads();
 }
 
 void Objects::setRotate(double rotX, double rotY, double rotZ)

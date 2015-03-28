@@ -237,12 +237,12 @@ void OpenGLWindow::initializeCamera()
     m_vMatrix.lookAt(cameraPosition, QVector3D(0,0,0),cameraUpDirection);
 
   //  m_vMatrix.translate(camera->getTranslateX(),camera->getTranslateY(),camera->getTranslateZ());
-    QVector3D *temp = camera->getTranslate();
-    temp->setX(-temp->x());
-    temp->setY(-temp->y());
-    temp->setZ(-temp->z());
+ //   QVector3D *temp = camera->getTranslate();
+  //  temp->setX(-temp->x());
+  //  temp->setY(-temp->y());
+  //  temp->setZ(-temp->z());
     m_vMatrix.translate(
-                *temp
+                -camera->getTranslateX(),-camera->getTranslateY(),-camera->getTranslateZ()
               //  camera->getTranslate()
                 );
 
