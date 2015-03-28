@@ -90,10 +90,13 @@ void LogicClass::calculateVelocity(World *world)
         {
         calculateVelocity(world,mov);
 
+        mov->setVelocity(constants::DEST_FORCE*mov->getVelocity());
         addForces(world,mov);
+      //  addForcesSource(world,mov,i);
+
          mov->moveNextStep();
 
-         mov->syncTransHeads();
+    //     mov->syncTransHeads();
 
         }
 
@@ -121,12 +124,25 @@ void LogicClass::stopSources(World *world)
 
 void LogicClass::addForces(World *world, Movers *movers)
 {
-    movers->setVelocity(constants::DEST_FORCE*movers->getVelocity());
+//    movers->setVelocity(constants::DEST_FORCE*movers->getVelocity());
 
     for(int i = 0;i<world->getHurdlesList().size();i++)
     {
 
         calculateIntermediateForce(movers,&world->getHurdlesList().operator [](i));
+
+    }
+
+}
+
+void LogicClass::addForcesSource(World *world, Movers *movers, int currentMover)
+{
+    for(int i = 0;i<world->getHurdlesList().size();i++)
+    {
+        if(i!=currentMover)
+        {
+        calculateIntermediateForce(movers,&world->getHurdlesList().operator [](i));
+        }
 
     }
 }
@@ -143,16 +159,28 @@ void LogicClass::calculateIntermediateForce(Movers *movers, Hurdles *hurdle)
 
         double force = Formula::gaussianFunction(hurdle->getStrength(),dist);
         repelVector.operator *=(force);
-     /*   double x = repelVector.x();
-        double z = repelVector.z();
-        repelVector.setZ(x);
-        repelVector.setX(z);
-        */
-   //   qDebug()<<repelVector;
-  //      reverseRepel(repelVector);
-   //     qDebug()<<repelVector;
 
         movers->setVelocity(movers->getVelocity()-repelVector);
+    }else
+    {
+        qDebug()<<dist;
+    }
+}
+
+void LogicClass::calculateIntermediateForce(Movers *mover1, Movers *mover2)
+{
+    double dist = mover1->getTranslate().distanceToPoint(mover2->getTranslate());
+    dist = dist - (mover1->getOpaqueDistance() + mover1->getOpaqueDistance());
+
+    if(dist>0)
+    {
+        QVector3D repelVector(mover2->getTranslate()-mover1->getTranslate());
+        repelVector.normalize();
+
+        double force = Formula::gaussianFunction(mover2->getStrength(),dist);
+        repelVector.operator *=(force);
+
+        mover1->setVelocity(mover1->getVelocity()-repelVector);
     }else
     {
         qDebug()<<dist;

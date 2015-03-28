@@ -21,7 +21,9 @@ class LogicClass
     static void moveSources(World *world);
     static void stopSources(World *world);
     static void addForces(World *world,Movers *movers);
+    static void addForcesSource(World *world,Movers *movers,int currentMover);
     static void calculateIntermediateForce(Movers *movers,Hurdles *hurdle);
+    static void calculateIntermediateForce(Movers *mover1,Movers *mover2);
     static void reverseRepel(QVector3D &repelVector);
     static void attachCamera(World *world, int number);
 };
