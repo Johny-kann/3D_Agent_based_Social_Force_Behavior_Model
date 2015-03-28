@@ -92,7 +92,7 @@ void LogicClass::calculateVelocity(World *world)
 
         mov->setVelocity(constants::DEST_FORCE*mov->getVelocity());
         addForces(world,mov);
-      //  addForcesSource(world,mov,i);
+        addForcesSource(world,mov,i);
 
          mov->moveNextStep();
 
@@ -137,11 +137,11 @@ void LogicClass::addForces(World *world, Movers *movers)
 
 void LogicClass::addForcesSource(World *world, Movers *movers, int currentMover)
 {
-    for(int i = 0;i<world->getHurdlesList().size();i++)
+    for(int i = 0;i<world->getSourceList().size();i++)
     {
         if(i!=currentMover)
         {
-        calculateIntermediateForce(movers,&world->getHurdlesList().operator [](i));
+        calculateIntermediateForce(movers,&world->getSourceList().operator [](i));
         }
 
     }

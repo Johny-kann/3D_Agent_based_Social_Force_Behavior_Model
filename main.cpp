@@ -51,30 +51,33 @@ int main(int argc, char *argv[])
       Movers mm2;
     mm.setSpeed(.5);
     mm2.setSpeed(0.5);
-    mm.setTranslate(20.0,0.0,0.0);
+    mm.setTranslate(0.0,0.0,0.0);
     mm2.setTranslate(35.0,0.0,50.0);
     mm.setDestinationPos(new QVector3D(35,0,50));
     mm2.setDestinationPos(new QVector3D(0,0,0));
 
-    Camera cc;
-    Movers m2;
-    cc.setTranslate(&m2.getTranslatePointer());
-    qDebug()<<*cc.getTranslate();
-//    m2.setTranslate();
-    m2.setTranslate(
-                2,3,4);
-    qDebug()<<*cc.getTranslate();
-    m2.setTranslate(*(new QVector3D(3,4,5)));
-    m2.setTranslate(*(new QVector3D(3,4,5.5)));
-    qDebug()<<*cc.getTranslate();
+    Movers mm3;
+    mm3.setSpeed(.5);
+    mm3.setTranslate(25.0,0,0.0);
+    mm3.setDestinationPos(new QVector3D(25.0,0,50));
+
+    Movers mm4;
+    mm4.setSpeed(.5);
+    mm4.setTranslate(0.0,0,20.0);
+    mm4.setDestinationPos(new QVector3D(50.0,0,30));
+
+
+  //  qDebug()<<*cc.getTranslate();
   //  controller.getWorld().addHurdles(hh);
   //  controller.getWorld().addHurdles(hh2);
   //   controller.getWorld().getCamera().setTranslate(mm.getCameraTransPos());
 
-     qDebug()<<*(controller.getWorld().getCamera().getTranslate());
+    // qDebug()<<*(controller.getWorld().getCamera().getTranslate());
 
     controller.getWorld().addSources(mm);
     controller.getWorld().addSources(mm2);
+    controller.getWorld().addSources(mm3);
+    controller.getWorld().addSources(mm4);
     controller.changeCamera(controller.centerLocation);
 
   /*  QLabel l;

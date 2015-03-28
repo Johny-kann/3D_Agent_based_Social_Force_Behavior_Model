@@ -219,6 +219,7 @@ QVector3D &Movers::getTranslatePointer()
 void Movers::moveNextStep()
 {
     this->translate.operator +=(this->velocity);
+    this->syncTransHeads();
 }
 
 void Movers::startMoving()
@@ -247,8 +248,8 @@ Movers::Movers()
     this->rotate.setY(0.0);
     this->rotate.setZ(0.0);
 
-    this->setStrength(0.0);
-    this->setOpaqueDistance(0.0);
+    this->setStrength(constants::SOURCE_STRENGH);
+    this->setOpaqueDistance(constants::SOURCE_OPAQUE_DISTANCE);
     this->setTextureImage(constants::SOURCE_IMAGE);
  //   this->setOpaqueDistance(0);
     //  this->setRotate();
