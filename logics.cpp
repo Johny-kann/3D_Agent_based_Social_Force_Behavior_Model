@@ -112,7 +112,7 @@ void LogicClass::calculateVelocity(World *world)
 
         if(mov->getVelocity().length()<0.001)
         {
-            qDebug()<<"Triggere";
+            qDebug()<<"Trigger";
             trigger(mov);
         }
          mov->moveNextStep();
